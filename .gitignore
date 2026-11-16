@@ -1,0 +1,19 @@
+# Saídas de compilação (em qualquer profundidade)
+target/
+target-*/
+**/*.rs.bk
+
+# Gerados pela demo web legada
+legacy/web-demo/dist/
+legacy/web-demo/shots/
+legacy/web-demo/test/wav/
+
+# Ambiente e arquivos locais
+.env
+.env.*
+*.local.toml
+*.log
+
+# Saída de capturas de tela do README
+saida-capturas/
+.DS_Store

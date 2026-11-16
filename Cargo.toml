@@ -1,0 +1,63 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/tonica-dsp",
+    "crates/tonica-theory",
+    "crates/tonica-core",
+    "crates/tonica-sim",
+    "crates/tonica-audio",
+    "crates/tonica-session",
+    "crates/tonica-cli",
+    "crates/guitarness-learn",
+    "crates/guitarness-verify",
+]
+# Bevy prototype builds as its own workspace for now (separate lock and target dir).
+exclude = ["crates/tonica-game"]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+license = "MIT"
+repository = "https://github.com/jottakka/guitarness"
+rust-version = "1.97.1"
+
+[workspace.dependencies]
+tonica-dsp = { path = "crates/tonica-dsp" }
+hound = "=3.5.1"
+serde_json = "=1.0.154"
+criterion = { version = "=0.8.2", default-features = false }
+realfft = "=3.5.1"
+# default-features off: its default `disable_release` would unify into tonica-audio's release tests and remove AllocDisabler.
+assert_no_alloc = { version = "=1.1.2", default-features = false }
+cpal = "=0.18.2"
+rtrb = "=0.4.1"
+tonica-audio = { path = "crates/tonica-audio" }
+tonica-theory = { path = "crates/tonica-theory" }
+tonica-core = { path = "crates/tonica-core" }
+tonica-session = { path = "crates/tonica-session" }
+tonica-sim = { path = "crates/tonica-sim" }
+guitarness-learn = { path = "crates/guitarness-learn" }
+guitarness-verify = { path = "crates/guitarness-verify" }
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+
+[profile.bench]
+lto = "fat"
+codegen-units = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+# The DSP and the benches are numeric loops: optimise them in test builds too
+# (debug assertions stay on, so the no-allocation test still works).
+[profile.dev.package.tonica-dsp]
+opt-level = 3
+
+[profile.dev.package.tonica-sim]
+opt-level = 3
+
+[profile.dev.package.guitarness-verify]
+opt-level = 3

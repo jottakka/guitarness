@@ -1,0 +1,15 @@
+[package]
+name = "tonica-session"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tonica-core.workspace = true
+tonica-audio.workspace = true
+tonica-dsp.workspace = true
+tonica-sim.workspace = true
+hound.workspace = true
+serde_json.workspace = true

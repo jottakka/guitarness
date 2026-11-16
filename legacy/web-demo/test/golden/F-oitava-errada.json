@@ -1,0 +1,227 @@
+{
+ "nome": "F-oitava-errada",
+ "descricao": "O alvo é a oitava de cima da nota tocada: não pode sair nenhum evento via \"alvo\".",
+ "wav_sha256": "9b2545c0bbc76edbda9797177e2349bda119ca0f59cd136abc708976d9bf7b6a",
+ "parametros": {
+  "taxa": 48000,
+  "decimacao": 2,
+  "janela": 1024,
+  "passo": 257,
+  "bloco": 128,
+  "filtros": "RBJ: passa-altas 62 Hz Q 0,707; dois passa-baixas 2600 Hz Q 0,707"
+ },
+ "tocadas": [
+  {
+   "t": 0.6,
+   "midi": 45,
+   "amp": 0.2,
+   "damp": 1
+  },
+  {
+   "t": 1.1,
+   "midi": 48,
+   "amp": 0.2,
+   "damp": 1.5
+  },
+  {
+   "t": 1.6,
+   "midi": 50,
+   "amp": 0.2,
+   "damp": 2
+  },
+  {
+   "t": 2.1,
+   "midi": 52,
+   "amp": 0.2,
+   "damp": 2.5
+  },
+  {
+   "t": 2.6,
+   "midi": 55,
+   "amp": 0.2,
+   "damp": 3
+  },
+  {
+   "t": 3.1,
+   "midi": 57,
+   "amp": 0.2,
+   "damp": 3.5
+  },
+  {
+   "t": 3.6,
+   "midi": 60,
+   "amp": 0.2,
+   "damp": 4
+  },
+  {
+   "t": 4.1,
+   "midi": 62,
+   "amp": 0.2,
+   "damp": 4.5
+  },
+  {
+   "t": 4.6,
+   "midi": 64,
+   "amp": 0.2,
+   "damp": 5
+  }
+ ],
+ "alvos": [
+  {
+   "t": 0.3,
+   "midis": [
+    57
+   ]
+  },
+  {
+   "t": 0.8,
+   "midis": [
+    60
+   ]
+  },
+  {
+   "t": 1.3,
+   "midis": [
+    62
+   ]
+  },
+  {
+   "t": 1.8,
+   "midis": [
+    64
+   ]
+  },
+  {
+   "t": 2.3,
+   "midis": [
+    67
+   ]
+  },
+  {
+   "t": 2.8,
+   "midis": [
+    69
+   ]
+  },
+  {
+   "t": 3.3,
+   "midis": [
+    72
+   ]
+  },
+  {
+   "t": 3.8,
+   "midis": [
+    74
+   ]
+  },
+  {
+   "t": 4.3,
+   "midis": [
+    76
+   ]
+  }
+ ],
+ "quadros": 513,
+ "eventos": [
+  {
+   "t": 0.61035,
+   "tipo": "ataque"
+  },
+  {
+   "t": 0.65319,
+   "tipo": "nota",
+   "midi": 45,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 1.10294,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.14577,
+   "tipo": "nota",
+   "midi": 48,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 1.60623,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.64906,
+   "tipo": "nota",
+   "midi": 50,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 2.10952,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.15235,
+   "tipo": "nota",
+   "midi": 52,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 2.6021,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.64494,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 3.1054,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.14823,
+   "tipo": "nota",
+   "midi": 57,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 3.60869,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.65152,
+   "tipo": "nota",
+   "midi": 60,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 4.10127,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.1441,
+   "tipo": "nota",
+   "midi": 62,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 4.60456,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.6474,
+   "tipo": "nota",
+   "midi": 64,
+   "via": "mpm",
+   "ataque": true
+  }
+ ]
+}

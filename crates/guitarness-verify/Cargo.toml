@@ -1,0 +1,15 @@
+[package]
+name = "guitarness-verify"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tonica-core.workspace = true
+tonica-dsp.workspace = true
+realfft.workspace = true
+
+[dev-dependencies]
+tonica-sim.workspace = true

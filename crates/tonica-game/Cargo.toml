@@ -1,0 +1,30 @@
+[package]
+name = "tonica-game"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+repository = "https://github.com/jottakka/guitarness"
+
+[lib]
+name = "tonica_game"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tonica-game"
+path = "src/main.rs"
+
+[dependencies]
+# Default features minus `audio` (bevy_audio, rodio, cpal 0.17, lewton): the game has one audio stack, tonica-audio.
+bevy = { version = "=0.20.1", default-features = false, features = ["2d", "3d", "ui"] }
+tonica-theory = { path = "../tonica-theory" }
+tonica-core = { path = "../tonica-core" }
+tonica-audio = { path = "../tonica-audio" }
+tonica-session = { path = "../tonica-session" }
+tonica-dsp = { path = "../tonica-dsp" }
+guitarness-learn = { path = "../guitarness-learn" }
+
+[workspace]
+
+[profile.dev.package."*"]
+opt-level = 2

@@ -1,0 +1,28 @@
+[package]
+name = "tonica-cli"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "tonica"
+path = "src/main.rs"
+
+[dependencies]
+tonica-dsp.workspace = true
+hound.workspace = true
+tonica-audio.workspace = true
+tonica-core.workspace = true
+tonica-session.workspace = true
+tonica-sim.workspace = true
+guitarness-verify.workspace = true
+serde_json.workspace = true
+# Optional: the plan declares it directly here (default features off); the
+# workspace entry stays unchanged.
+assert_no_alloc = { version = "=1.1.2", default-features = false, optional = true }
+
+[features]
+# Run the audio callbacks under assert_no_alloc and install its allocator.
+rt-audit = ["dep:assert_no_alloc", "tonica-audio/rt-audit"]

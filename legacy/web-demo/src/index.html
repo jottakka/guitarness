@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tônica arcade de violão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/*__CSS__*/
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header class="topo">
+    <button class="brand" id="btnHome" type="button">Tônica</button>
+    <div class="xp" aria-label="Progresso">
+      <span id="xpTxt">Nível 1 · 0 XP</span>
+      <div class="xpbar"><i id="xpFill"></i></div>
+    </div>
+    <button class="mic" id="micBtn" type="button" aria-pressed="false"><i></i><span id="micTxt">Ligar mic</span></button>
+  </header>
+
+  <div class="aviso" id="aviso" hidden>
+    <p id="avisoTxt"></p>
+    <button type="button" id="avisoX" aria-label="Fechar aviso">Entendi</button>
+  </div>
+
+  <main>
+    <!-- ============ INÍCIO ============ -->
+    <section class="tela on" id="t-home">
+      <div class="hero">
+        <h1 class="logo" aria-label="Tônica"><span>T</span><span>ô</span><span>n</span><span>i</span><span>c</span><span>a</span></h1>
+        <p class="lema">Arcade de violão. Escalas, intervalos e acordes em rodadas de 1 minuto.</p>
+      </div>
+      <div class="palco">
+        <div id="heroBraco"></div>
+        <p class="fala" id="heroFala" aria-live="polite">Toque qualquer nota, no violão ou aqui na tela. Cada cor é um intervalo.</p>
+      </div>
+      <div class="hojebox">
+        <div><span class="rotulo">Meta de hoje</span><div class="pips" id="pips"><i></i><i></i><i></i></div></div>
+        <div><span class="rotulo">Dias tocados</span><b class="num" id="diasN">0</b></div>
+        <div><span class="rotulo">Rodadas hoje</span><b class="num" id="rodN">0</b></div>
+      </div>
+      <nav class="modos" aria-label="Modos">
+        <button class="modo" type="button" data-ir="hunt" style="--c:#ff5964"><span class="palheta">T</span><span class="mtxt"><b>Caça-Notas</b><small>A nota aparece, você toca antes do tempo acabar.</small></span><span class="mbest" id="bHunt"></span></button>
+        <button class="modo" type="button" data-ir="chord" style="--c:#c8e64b"><span class="palheta">3M</span><span class="mtxt"><b>Monta-Acorde</b><small>T + 3ª + 5J: monte os acordes do campo harmônico.</small></span><span class="mbest" id="bChord"></span></button>
+        <button class="modo" type="button" data-ir="jam" style="--c:#38bdf8"><span class="palheta">5J</span><span class="mtxt"><b>Jam</b><small>Improvise sobre uma base ou sobre a sua música.</small></span><span class="mbest" id="bJam"></span></button>
+        <button class="modo" type="button" data-ir="afina" style="--c:#ffb703"><span class="palheta">Lá</span><span class="mtxt"><b>Afinador e teste de som</b><small>Confira se o jogo está ouvindo bem o seu violão.</small></span><span class="mbest" id="bAfina"></span></button>
+        <button class="modo" type="button" data-ir="plano" style="--c:#e879f9"><span class="palheta">4s</span><span class="mtxt"><b>Plano de 4 semanas</b><small>Regras da casa e o que jogar em cada semana.</small></span><span class="mbest"></span></button>
+      </nav>
+    </section>
+
+    <!-- ============ CAÇA-NOTAS ============ -->
+    <section class="tela" id="t-hunt">
+      <div class="prep" id="huntPrep">
+        <h2>Caça-Notas</h2>
+        <p class="sub">A nota aparece, você toca antes do tempo acabar. A rodada dura 1 minuto e a velocidade se ajusta a você.</p>
+        <div class="grupo"><span class="rotulo">Fase</span><div class="chips" id="huntFases"></div></div>
+        <div class="grupo"><span class="rotulo">Como a nota aparece</span>
+          <div class="seg" id="huntEstilo">
+            <button type="button" data-v="guiado">Guiado</button>
+            <button type="button" data-v="notas">Notas</button>
+            <button type="button" data-v="intervalos">Intervalos</button>
+          </div>
+          <p class="dica" id="huntEstiloDica"></p>
+        </div>
+        <div class="acoes"><button class="btn grande" id="huntGo" type="button">Começar rodada</button></div>
+        <span class="rotulo">As notas desta fase</span>
+        <div id="huntPrevia"></div>
+        <p class="dica" id="huntFaseDica"></p>
+      </div>
+      <div class="jogo" id="huntJogo" hidden>
+        <div class="hud">
+          <div class="hudi"><b id="hTempo">60</b><span>segundos</span></div>
+          <div class="hudi"><b id="hPontos">0</b><span>pontos</span></div>
+          <div class="hudi"><b id="hCombo">0</b><span>seguidas</span></div>
+        </div>
+        <div class="pedido" id="hPedido">
+          <div class="pnota" id="hNota">3</div>
+          <div class="psub" id="hSub">Prepare o violão</div>
+          <div class="pbarra"><i id="hBarra"></i></div>
+        </div>
+        <div id="huntBraco"></div>
+        <p class="fala" id="hFala" aria-live="polite"></p>
+        <div class="acoes"><button class="btn fantasma" id="huntSair" type="button">Encerrar rodada</button></div>
+      </div>
+    </section>
+
+    <!-- ============ MONTA-ACORDE ============ -->
+    <section class="tela" id="t-chord">
+      <div class="prep" id="chPrep">
+        <h2>Monta-Acorde</h2>
+        <p class="sub">Todo acorde básico tem três notas: tônica, terça e quinta. Toque as três, uma de cada vez e em qualquer ordem, para montar os seis acordes do campo harmônico de Dó maior.</p>
+        <div class="receita">
+          <div style="--c:#ff5964"><b>T</b><span>a nota que dá nome ao acorde</span></div>
+          <div style="--c:#c8e64b"><b>3M</b><span>4 casas acima da T: acorde maior</span></div>
+          <div style="--c:#ffd23f"><b>3m</b><span>3 casas acima da T: acorde menor</span></div>
+          <div style="--c:#38bdf8"><b>5J</b><span>7 casas acima da T</span></div>
+        </div>
+        <div class="grupo"><span class="rotulo">Jeito de jogar</span>
+          <div class="seg" id="chEstilo">
+            <button type="button" data-v="guiado">Guiado</button>
+            <button type="button" data-v="rapido">Pense rápido</button>
+          </div>
+          <p class="dica" id="chDica"></p>
+        </div>
+        <div class="acoes"><button class="btn grande" id="chGo" type="button">Começar</button></div>
+      </div>
+      <div class="jogo" id="chJogo" hidden>
+        <div class="hud">
+          <div class="hudi"><b id="cNum">1/6</b><span>acorde</span></div>
+          <div class="hudi"><b id="cPontos">0</b><span>pontos</span></div>
+          <div class="hudi"><b id="cBonus">300</b><span>bônus de tempo</span></div>
+        </div>
+        <div class="acorde">
+          <div id="cRoda"></div>
+          <div class="alado">
+            <div class="aext" id="cExt">Dó maior</div>
+            <div class="slots" id="cSlots"></div>
+          </div>
+        </div>
+        <div id="chBraco"></div>
+        <p class="fala" id="cFala" aria-live="polite"></p>
+        <div class="acoes"><button class="btn" id="cProx" type="button" hidden>Próximo acorde</button><button class="btn fantasma" id="chSair" type="button">Encerrar</button></div>
+      </div>
+    </section>
+
+    <!-- ============ JAM ============ -->
+    <section class="tela" id="t-jam">
+      <div class="prep" id="jamPrep">
+        <h2>Jam</h2>
+        <p class="sub">Improvise com cinco notas. Toda nota da pentatônica soa bem; as notas do acorde da vez valem mais.</p>
+        <div class="seg" id="jamFonte">
+          <button type="button" data-v="base">Base do jogo</button>
+          <button type="button" data-v="musica">Sua música</button>
+        </div>
+        <div id="jamBaseBox">
+          <div class="grupo"><span class="rotulo">Tom</span>
+            <div class="seg" id="jamTom">
+              <button type="button" data-v="9">Lá menor, casa 5</button>
+              <button type="button" data-v="4">Mi menor, cordas soltas</button>
+            </div>
+          </div>
+          <div class="grupo"><span class="rotulo">Sua progressão: escolha um compasso e troque o acorde</span>
+            <div class="prog" id="jamProg"></div>
+            <div class="chips" id="jamGraus"></div>
+          </div>
+          <div class="grupo"><label class="rotulo" for="jamBpm">Andamento: <output id="jamBpmV" for="jamBpm">84</output> bpm</label>
+            <input type="range" id="jamBpm" min="60" max="120" step="4" value="84"></div>
+        </div>
+        <div id="jamMusicaBox" hidden>
+          <div class="grupo">
+            <label class="arquivo" for="jamArq">Escolher arquivo de áudio</label>
+            <input type="file" id="jamArq" accept="audio/*" class="vh">
+            <p class="dica" id="jamArqInfo">MP3, M4A ou WAV. O arquivo não sai do seu aparelho. O jogo estima o tom e mostra a pentatônica que combina.</p>
+          </div>
+          <div class="grupo" id="jamTomMusica" hidden><span class="rotulo">Tom da música</span>
+            <div class="tomsel">
+              <button type="button" id="jamTomMenos" aria-label="Meio tom abaixo">−</button>
+              <b id="jamTomNome">Lá menor</b>
+              <button type="button" id="jamTomMais" aria-label="Meio tom acima">+</button>
+              <button type="button" id="jamTomModo">trocar maior/menor</button>
+            </div>
+            <p class="dica">A estimativa pode errar. Se as notas soarem estranhas, mude o tom aqui.</p>
+          </div>
+        </div>
+        <label class="check" for="jamFone"><input type="checkbox" id="jamFone"> <span>Estou de fone de ouvido. Sem fone, o microfone ouve a música junto com o violão e erra mais.</span></label>
+        <div class="acoes"><button class="btn grande" id="jamGo" type="button">Começar jam</button></div>
+      </div>
+      <div class="jogo" id="jamJogo" hidden>
+        <div class="hud">
+          <div class="hudi"><b id="jDentro">0</b><span>notas na escala</span></div>
+          <div class="hudi"><b id="jPontos">0</b><span>pontos</span></div>
+          <div class="hudi"><b id="jCombo">0</b><span>seguidas</span></div>
+        </div>
+        <div class="faixa" id="jamFaixa"></div>
+        <canvas id="jamRastro" aria-hidden="true"></canvas>
+        <div id="jamBraco"></div>
+        <p class="fala" id="jFala" aria-live="polite"></p>
+        <div class="acoes"><button class="btn fantasma" id="jamSair" type="button">Parar e ver o resultado</button></div>
+      </div>
+    </section>
+
+    <!-- ============ AFINADOR ============ -->
+    <section class="tela" id="t-afina">
+      <h2>Afinador e teste de som</h2>
+      <p class="sub">Toque uma corda solta por vez. Afinar as seis é o aquecimento do dia.</p>
+      <div class="afin">
+        <div class="anota" id="aNota">–</div>
+        <div class="acorda" id="aCorda">Ligue o microfone para começar.</div>
+        <div class="agulha" aria-hidden="true"><span class="acentro"></span><i id="aPonteiro"></i></div>
+        <div class="alegenda" aria-hidden="true"><span>grave</span><span>afinada</span><span>aguda</span></div>
+      </div>
+      <ol class="cordas6" id="aCordas"></ol>
+      <div class="grupo"><label class="rotulo" for="aEntrada">Entrada de áudio</label>
+        <select id="aEntrada"><option value="">Padrão do aparelho</option></select></div>
+      <dl class="diag" id="aDiag"></dl>
+      <div class="acoes">
+        <button class="btn fantasma" id="aLat" type="button">Medir latência</button>
+        <label class="arquivo" for="aArq">Testar com uma gravação</label>
+        <input type="file" id="aArq" accept="audio/*" class="vh">
+      </div>
+      <p class="dica" id="aLatOut">Sem microfone por aqui? Grave o violão no gravador do celular e carregue o arquivo: o jogo mostra as notas que reconheceu.</p>
+      <ul class="notaslog" id="aLog"></ul>
+      <details class="sob">
+        <summary>Como o jogo escuta o violão</summary>
+        <ol>
+          <li><b>Captura crua.</b> O microfone é aberto com cancelamento de eco, redução de ruído e ganho automático desligados. Esses filtros são feitos para voz e deformam notas longas.</li>
+          <li><b>Filtro e redução.</b> Corta abaixo de 62 Hz e acima de 2,6 kHz e reduz a taxa para perto de 24 kHz. Sobra o que importa para achar a nota.</li>
+          <li><b>Análise na thread de áudio.</b> Um AudioWorklet olha os últimos 43 ms a cada 11 ms e calcula a autocorrelação normalizada (método de McLeod). O Mi grave tem período de 12 ms, então a janela guarda três ciclos e meio dele.</li>
+          <li><b>Dois caminhos.</b> Para a nota que o jogo espera, basta o pico da autocorrelação no período dela depois de um ataque: isso aguenta outras cordas ainda soando. Para nota livre, vale só a nota única e limpa.</li>
+          <li><b>Ataque primeiro.</b> A subida de volume é percebida em um passo de análise; a nota sai logo depois. Acerto vale na hora, erro espera um instante para não acusar falso.</li>
+        </ol>
+        <p class="dica">Dicas: celular a dois palmos da boca do violão, sala sem TV ligada, fone de fio no Jam. Fone Bluetooth com microfone costuma piorar o som capturado e atrasar tudo.</p>
+      </details>
+    </section>
+
+    <!-- ============ PLANO ============ -->
+    <section class="tela" id="t-plano">
+      <h2>Plano de 4 semanas</h2>
+      <p class="sub">Feito para quem enjoa rápido: sessões de minutos, escolha livre do que jogar e progresso que aparece na tela.</p>
+      <h3>Regras da casa</h3>
+      <ol class="regras">
+        <li><b>Uma rodada já vale.</b> A meta do dia é pegar o violão e jogar 1 minuto. Três rodadas fecham a meta; o resto é bônus.</li>
+        <li><b>Violão à vista.</b> Fora da capa, no suporte, ao lado de onde você trabalha. Esta página fica a um toque.</li>
+        <li><b>Cardápio, não cronograma.</b> Escolha o modo que der vontade. Alternar modos na mesma sessão ajuda a fixar.</li>
+        <li><b>Música toda semana.</b> Feche a semana com um Jam em cima de algo que você gosta de ouvir.</li>
+        <li><b>Erro é informação.</b> Não existe fim de jogo. Se errar muito, o tempo aumenta; se acertar tudo, diminui.</li>
+        <li><b>Dias tocados não zeram.</b> Faltou um dia? O contador só espera você voltar.</li>
+        <li><b>Dedo dói no começo.</b> Várias sessões curtas doem menos que uma longa, e a ponta dos dedos engrossa em poucas semanas.</li>
+      </ol>
+      <h3>Semana a semana</h3>
+      <div class="semanas">
+        <article><h4><span style="--c:#ff5964">1</span> Som e cordas</h4><p>Afinador todo dia. Caça-Notas: Cordas soltas e depois Pentatônica de Mi menor, no Guiado. Jam em Mi menor com a base do jogo.</p><p class="meta">Meta: liberar as 12 notas de Mi menor.</p></article>
+        <article><h4><span style="--c:#ffd23f">2</span> O desenho famoso</h4><p>Caça-Notas: Pentatônica de Lá menor, Guiado e depois Notas. Jam em Lá menor. Experimente o Monta-Acorde guiado.</p><p class="meta">Meta: 2 estrelas em Lá menor.</p></article>
+        <article><h4><span style="--c:#4ade80">3</span> Intervalos e acordes</h4><p>Caça-Notas no estilo Intervalos (T, 3m, 4J, 5J, 7m). Monta-Acorde guiado até fechar os seis acordes sem erro.</p><p class="meta">Meta: saber de cabeça T, 3ª e 5J de C, G, Am e F.</p></article>
+        <article><h4><span style="--c:#38bdf8">4</span> Juntar tudo</h4><p>Escala de Dó maior. Monta-Acorde no Pense rápido. No Jam, monte a sua progressão e depois carregue uma música sua.</p><p class="meta">Meta: improvisar 1 minuto inteiro em cima de uma música que você gosta.</p></article>
+      </div>
+      <p class="dica">Depois disso: mesma escala em outros tons (o desenho só muda de casa), tétrades (T, 3ª, 5J, 7ª) e ritmo.</p>
+    </section>
+
+    <!-- ============ FIM DE RODADA ============ -->
+    <section class="tela" id="t-fim">
+      <p class="olho" id="fOlho"></p>
+      <h2 id="fTitulo">Rodada concluída</h2>
+      <div class="estrelas" id="fEstrelas" aria-hidden="true"></div>
+      <div class="placar"><b id="fPontos">0</b><span>pontos</span></div>
+      <dl class="stats" id="fStats"></dl>
+      <p class="fala" id="fMsg"></p>
+      <div class="acoes">
+        <button class="btn grande" id="fDeNovo" type="button">Mais uma rodada</button>
+        <button class="btn" id="fExtra" type="button" hidden></button>
+        <button class="btn fantasma" id="fInicio" type="button">Início</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="ouvido" id="ouvido">
+  <span class="omodo" id="oModo">Modo toque</span>
+  <div class="onivel" aria-hidden="true"><i id="oNivel"></i></div>
+  <span class="onota" id="oNota">toque nas bolinhas</span>
+</footer>
+<div id="toasts" aria-live="polite"></div>
+
+<script>
+/*__JS__*/
+</script>
+</body>
+</html>

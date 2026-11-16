@@ -1,0 +1,540 @@
+{
+ "nome": "C-alvo-rapido",
+ "descricao": "Notas soando, uma a cada 0,3 s, com o alvo avisado 180 ms antes (modo guiado).",
+ "wav_sha256": "33b0fd6ac4ccad9e01e4ade23ab4741455c1929f09b932fd14f2c1b0fbb3314f",
+ "parametros": {
+  "taxa": 48000,
+  "decimacao": 2,
+  "janela": 1024,
+  "passo": 257,
+  "bloco": 128,
+  "filtros": "RBJ: passa-altas 62 Hz Q 0,707; dois passa-baixas 2600 Hz Q 0,707"
+ },
+ "tocadas": [
+  {
+   "t": 0.6,
+   "midi": 40,
+   "amp": 0.2
+  },
+  {
+   "t": 0.9,
+   "midi": 43,
+   "amp": 0.2
+  },
+  {
+   "t": 1.2,
+   "midi": 45,
+   "amp": 0.2
+  },
+  {
+   "t": 1.5,
+   "midi": 47,
+   "amp": 0.2
+  },
+  {
+   "t": 1.8,
+   "midi": 50,
+   "amp": 0.2
+  },
+  {
+   "t": 2.1,
+   "midi": 52,
+   "amp": 0.2
+  },
+  {
+   "t": 2.4,
+   "midi": 55,
+   "amp": 0.2
+  },
+  {
+   "t": 2.7,
+   "midi": 57,
+   "amp": 0.2
+  },
+  {
+   "t": 3,
+   "midi": 59,
+   "amp": 0.2
+  },
+  {
+   "t": 3.3,
+   "midi": 62,
+   "amp": 0.2
+  },
+  {
+   "t": 3.6,
+   "midi": 64,
+   "amp": 0.2
+  },
+  {
+   "t": 3.9,
+   "midi": 67,
+   "amp": 0.2
+  },
+  {
+   "t": 4.2,
+   "midi": 64,
+   "amp": 0.2
+  },
+  {
+   "t": 4.5,
+   "midi": 62,
+   "amp": 0.2
+  },
+  {
+   "t": 4.8,
+   "midi": 59,
+   "amp": 0.2
+  },
+  {
+   "t": 5.1,
+   "midi": 57,
+   "amp": 0.2
+  },
+  {
+   "t": 5.4,
+   "midi": 55,
+   "amp": 0.2
+  },
+  {
+   "t": 5.7,
+   "midi": 52,
+   "amp": 0.2
+  },
+  {
+   "t": 6,
+   "midi": 50,
+   "amp": 0.2
+  },
+  {
+   "t": 6.3,
+   "midi": 47,
+   "amp": 0.2
+  },
+  {
+   "t": 6.6,
+   "midi": 45,
+   "amp": 0.2
+  },
+  {
+   "t": 6.9,
+   "midi": 43,
+   "amp": 0.2
+  },
+  {
+   "t": 7.2,
+   "midi": 40,
+   "amp": 0.2
+  }
+ ],
+ "alvos": [
+  {
+   "t": 0.42,
+   "midis": [
+    40
+   ]
+  },
+  {
+   "t": 0.72,
+   "midis": [
+    43
+   ]
+  },
+  {
+   "t": 1.02,
+   "midis": [
+    45
+   ]
+  },
+  {
+   "t": 1.32,
+   "midis": [
+    47
+   ]
+  },
+  {
+   "t": 1.62,
+   "midis": [
+    50
+   ]
+  },
+  {
+   "t": 1.92,
+   "midis": [
+    52
+   ]
+  },
+  {
+   "t": 2.22,
+   "midis": [
+    55
+   ]
+  },
+  {
+   "t": 2.52,
+   "midis": [
+    57
+   ]
+  },
+  {
+   "t": 2.82,
+   "midis": [
+    59
+   ]
+  },
+  {
+   "t": 3.12,
+   "midis": [
+    62
+   ]
+  },
+  {
+   "t": 3.42,
+   "midis": [
+    64
+   ]
+  },
+  {
+   "t": 3.72,
+   "midis": [
+    67
+   ]
+  },
+  {
+   "t": 4.02,
+   "midis": [
+    64
+   ]
+  },
+  {
+   "t": 4.32,
+   "midis": [
+    62
+   ]
+  },
+  {
+   "t": 4.62,
+   "midis": [
+    59
+   ]
+  },
+  {
+   "t": 4.92,
+   "midis": [
+    57
+   ]
+  },
+  {
+   "t": 5.22,
+   "midis": [
+    55
+   ]
+  },
+  {
+   "t": 5.52,
+   "midis": [
+    52
+   ]
+  },
+  {
+   "t": 5.82,
+   "midis": [
+    50
+   ]
+  },
+  {
+   "t": 6.12,
+   "midis": [
+    47
+   ]
+  },
+  {
+   "t": 6.42,
+   "midis": [
+    45
+   ]
+  },
+  {
+   "t": 6.72,
+   "midis": [
+    43
+   ]
+  },
+  {
+   "t": 7.02,
+   "midis": [
+    40
+   ]
+  }
+ ],
+ "quadros": 737,
+ "eventos": [
+  {
+   "t": 0.61035,
+   "tipo": "ataque"
+  },
+  {
+   "t": 0.63177,
+   "tipo": "nota",
+   "midi": 40,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 0.91019,
+   "tipo": "ataque"
+  },
+  {
+   "t": 0.94231,
+   "tipo": "nota",
+   "midi": 43,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 1.21002,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.23144,
+   "tipo": "nota",
+   "midi": 45,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 1.48844,
+   "tipo": "nota",
+   "midi": 45,
+   "via": "mpm",
+   "ataque": false
+  },
+  {
+   "t": 1.50985,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.54198,
+   "tipo": "nota",
+   "midi": 47,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 1.8204,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.84181,
+   "tipo": "nota",
+   "midi": 50,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 2.10952,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.14165,
+   "tipo": "nota",
+   "midi": 52,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 2.40935,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.44148,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 2.70919,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.74131,
+   "tipo": "nota",
+   "midi": 57,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 3.00902,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.03044,
+   "tipo": "nota",
+   "midi": 59,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 3.30885,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.33027,
+   "tipo": "nota",
+   "midi": 62,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 3.60869,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.64081,
+   "tipo": "nota",
+   "midi": 64,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 3.90852,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.92994,
+   "tipo": "nota",
+   "midi": 67,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 4.09056,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "mpm",
+   "ataque": false
+  },
+  {
+   "t": 4.20835,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.21906,
+   "tipo": "nota",
+   "midi": 64,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 4.50819,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.5296,
+   "tipo": "nota",
+   "midi": 62,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 4.80802,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.82944,
+   "tipo": "nota",
+   "midi": 59,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 5.10785,
+   "tipo": "ataque"
+  },
+  {
+   "t": 5.12927,
+   "tipo": "nota",
+   "midi": 57,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 5.40769,
+   "tipo": "ataque"
+  },
+  {
+   "t": 5.43981,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 5.64327,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "mpm",
+   "ataque": false
+  },
+  {
+   "t": 5.71823,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.00735,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.03948,
+   "tipo": "nota",
+   "midi": 50,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 6.30719,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.33931,
+   "tipo": "nota",
+   "midi": 47,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 6.60702,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.63915,
+   "tipo": "nota",
+   "midi": 45,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 6.90685,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.93898,
+   "tipo": "nota",
+   "midi": 43,
+   "via": "alvo",
+   "ataque": true
+  },
+  {
+   "t": 7.20669,
+   "tipo": "ataque"
+  },
+  {
+   "t": 7.24952,
+   "tipo": "nota",
+   "midi": 40,
+   "via": "alvo",
+   "ataque": true
+  }
+ ]
+}

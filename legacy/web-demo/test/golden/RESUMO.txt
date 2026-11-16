@@ -1,0 +1,5 @@
+A-isoladas       37/37 notas tocadas reconhecidas; 0 eventos via alvo, 37 via mpm; 1648 quadros
+B-soando         23/23 notas tocadas reconhecidas; 0 eventos via alvo, 23 via mpm; 1167 quadros
+C-alvo-rapido    22/23 notas tocadas reconhecidas; 22 eventos via alvo, 3 via mpm; 737 quadros
+D-forte-fraco    20/23 notas tocadas reconhecidas; 20 eventos via alvo, 0 via mpm; 1167 quadros
+F-oitava-errada   9/9 notas tocadas reconhecidas; 0 eventos via alvo, 9 via mpm; 513 quadros

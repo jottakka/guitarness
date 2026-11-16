@@ -1,0 +1,387 @@
+{
+ "nome": "B-soando",
+ "descricao": "Notas que continuam soando (cordas soltas). Sem alvo.",
+ "wav_sha256": "639bfbd079b7426adb687e514d8c81720acd5aa67e942aac95e85185b8968540",
+ "parametros": {
+  "taxa": 48000,
+  "decimacao": 2,
+  "janela": 1024,
+  "passo": 257,
+  "bloco": 128,
+  "filtros": "RBJ: passa-altas 62 Hz Q 0,707; dois passa-baixas 2600 Hz Q 0,707"
+ },
+ "tocadas": [
+  {
+   "t": 0.6,
+   "midi": 40,
+   "amp": 0.2
+  },
+  {
+   "t": 1.1,
+   "midi": 43,
+   "amp": 0.2
+  },
+  {
+   "t": 1.6,
+   "midi": 45,
+   "amp": 0.2
+  },
+  {
+   "t": 2.1,
+   "midi": 47,
+   "amp": 0.2
+  },
+  {
+   "t": 2.6,
+   "midi": 50,
+   "amp": 0.2
+  },
+  {
+   "t": 3.1,
+   "midi": 52,
+   "amp": 0.2
+  },
+  {
+   "t": 3.6,
+   "midi": 55,
+   "amp": 0.2
+  },
+  {
+   "t": 4.1,
+   "midi": 57,
+   "amp": 0.2
+  },
+  {
+   "t": 4.6,
+   "midi": 59,
+   "amp": 0.2
+  },
+  {
+   "t": 5.1,
+   "midi": 62,
+   "amp": 0.2
+  },
+  {
+   "t": 5.6,
+   "midi": 64,
+   "amp": 0.2
+  },
+  {
+   "t": 6.1,
+   "midi": 67,
+   "amp": 0.2
+  },
+  {
+   "t": 6.6,
+   "midi": 64,
+   "amp": 0.2
+  },
+  {
+   "t": 7.1,
+   "midi": 62,
+   "amp": 0.2
+  },
+  {
+   "t": 7.6,
+   "midi": 59,
+   "amp": 0.2
+  },
+  {
+   "t": 8.1,
+   "midi": 57,
+   "amp": 0.2
+  },
+  {
+   "t": 8.6,
+   "midi": 55,
+   "amp": 0.2
+  },
+  {
+   "t": 9.1,
+   "midi": 52,
+   "amp": 0.2
+  },
+  {
+   "t": 9.6,
+   "midi": 50,
+   "amp": 0.2
+  },
+  {
+   "t": 10.1,
+   "midi": 47,
+   "amp": 0.2
+  },
+  {
+   "t": 10.6,
+   "midi": 45,
+   "amp": 0.2
+  },
+  {
+   "t": 11.1,
+   "midi": 43,
+   "amp": 0.2
+  },
+  {
+   "t": 11.6,
+   "midi": 40,
+   "amp": 0.2
+  }
+ ],
+ "alvos": [],
+ "quadros": 1167,
+ "eventos": [
+  {
+   "t": 0.61035,
+   "tipo": "ataque"
+  },
+  {
+   "t": 0.65319,
+   "tipo": "nota",
+   "midi": 40,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 1.10294,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.15648,
+   "tipo": "nota",
+   "midi": 43,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 1.60623,
+   "tipo": "ataque"
+  },
+  {
+   "t": 1.65977,
+   "tipo": "nota",
+   "midi": 45,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 2.10952,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.15235,
+   "tipo": "nota",
+   "midi": 47,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 2.6021,
+   "tipo": "ataque"
+  },
+  {
+   "t": 2.65565,
+   "tipo": "nota",
+   "midi": 50,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 3.1054,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.15894,
+   "tipo": "nota",
+   "midi": 52,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 3.60869,
+   "tipo": "ataque"
+  },
+  {
+   "t": 3.65152,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 4.11198,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.15481,
+   "tipo": "nota",
+   "midi": 57,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 4.60456,
+   "tipo": "ataque"
+  },
+  {
+   "t": 4.63669,
+   "tipo": "nota",
+   "midi": 59,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 5.10785,
+   "tipo": "ataque"
+  },
+  {
+   "t": 5.15069,
+   "tipo": "nota",
+   "midi": 62,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 5.61115,
+   "tipo": "ataque"
+  },
+  {
+   "t": 5.65398,
+   "tipo": "nota",
+   "midi": 64,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 6.10373,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.14656,
+   "tipo": "nota",
+   "midi": 67,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 6.60702,
+   "tipo": "ataque"
+  },
+  {
+   "t": 6.66056,
+   "tipo": "nota",
+   "midi": 64,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 7.11031,
+   "tipo": "ataque"
+  },
+  {
+   "t": 7.15315,
+   "tipo": "nota",
+   "midi": 62,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 7.6029,
+   "tipo": "ataque"
+  },
+  {
+   "t": 7.64573,
+   "tipo": "nota",
+   "midi": 59,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 8.10619,
+   "tipo": "ataque"
+  },
+  {
+   "t": 8.14902,
+   "tipo": "nota",
+   "midi": 57,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 8.60948,
+   "tipo": "ataque"
+  },
+  {
+   "t": 8.65231,
+   "tipo": "nota",
+   "midi": 55,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 9.10206,
+   "tipo": "ataque"
+  },
+  {
+   "t": 9.1556,
+   "tipo": "nota",
+   "midi": 52,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 9.60535,
+   "tipo": "ataque"
+  },
+  {
+   "t": 9.6589,
+   "tipo": "nota",
+   "midi": 50,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 10.10865,
+   "tipo": "ataque"
+  },
+  {
+   "t": 10.15148,
+   "tipo": "nota",
+   "midi": 47,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 10.61194,
+   "tipo": "ataque"
+  },
+  {
+   "t": 10.65477,
+   "tipo": "nota",
+   "midi": 45,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 11.10452,
+   "tipo": "ataque"
+  },
+  {
+   "t": 11.15806,
+   "tipo": "nota",
+   "midi": 43,
+   "via": "mpm",
+   "ataque": true
+  },
+  {
+   "t": 11.60781,
+   "tipo": "ataque"
+  },
+  {
+   "t": 11.66135,
+   "tipo": "nota",
+   "midi": 40,
+   "via": "mpm",
+   "ataque": true
+  }
+ ]
+}
