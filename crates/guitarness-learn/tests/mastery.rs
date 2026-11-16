@@ -1,15 +1,17 @@
 //! N1 tests: evidence table, zero-weight neutrality, weights, decay, grade, fold, dispute, determinism.
 
+use guitarness_core::chart::{Chart, Dir, EventKind};
+use guitarness_core::gates::{GateState, GateTable};
+use guitarness_core::pulse::{Exercise, exercise};
+use guitarness_core::verdict::{
+    Attack, Direction, JudgeOut, PulseVerdict, Timing, VerdictType, Why,
+};
 use guitarness_learn::evidence::{evidence_of_round, skill_of, weight};
 use guitarness_learn::mastery::{DAY_MS, HOUR_MS, LearnerLedger, grade_of};
 use guitarness_learn::types::{
     BlockKind, BlockRecord, BlockSpec, Evidence, Grade, LearnConfig, LogLine, Outcome, Provenance,
     SkillKey, ZeroWhy,
 };
-use tonica_core::chart::{Chart, Dir, EventKind};
-use tonica_core::gates::{GateState, GateTable};
-use tonica_core::pulse::{Exercise, exercise};
-use tonica_core::verdict::{Attack, Direction, JudgeOut, PulseVerdict, Timing, VerdictType, Why};
 
 struct Rng(u64);
 impl Rng {

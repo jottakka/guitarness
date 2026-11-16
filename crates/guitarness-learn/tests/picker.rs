@@ -1,6 +1,9 @@
 //! N3 tests: agenda read through the picker, one axis, rule order, probe, stretch gate,
 //! exploration probabilities, no public due list.
 
+use guitarness_core::gates::GateState;
+use guitarness_core::pulse::Exercise;
+use guitarness_core::verdict::VerdictType;
 use guitarness_learn::mastery::{DAY_MS, HOUR_MS, LearnerLedger, STEPS};
 use guitarness_learn::picker::{next_offer, something_else, something_else_in};
 use guitarness_learn::probe::{choice_for_else, cut_to_probe};
@@ -8,9 +11,6 @@ use guitarness_learn::types::{
     Axis, BlockKind, BlockRecord, BlockSpec, Choice, Evidence, Grade, LearnConfig, Offer, Outcome,
     Provenance, SessionCtx, SkillKey,
 };
-use tonica_core::gates::GateState;
-use tonica_core::pulse::Exercise;
-use tonica_core::verdict::VerdictType;
 
 struct Rng(u64);
 impl Rng {

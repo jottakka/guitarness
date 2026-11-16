@@ -1,4 +1,4 @@
-# Tônica: pesquisa de game design (ideias que funcionaram, e como aplicar)
+# Guitarness: pesquisa de game design (ideias que funcionaram, e como aplicar)
 
 Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento é pesquisa, não decisão: o [design do jogo](../design/design-do-jogo.md) continua mandando.
 
@@ -10,16 +10,16 @@ Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento �
 
 ## 1. Resumo executivo (10 pontos)
 
-1. **O ganho do Rocksmith que mais importa para nós é a dificuldade dinâmica por trecho sem reprovação**: a música não acaba por erro, a densidade de notas sobe ou desce por fase, e o jogo guarda o último nível tocado [E:S1]. O Riff Repeater (trecho, velocidade, densidade) é o laço de prática que os jogadores de fato usam [E?:S3]. A crítica recorrente é latência, ajuste automático opaco e desbloqueios [E:S1]. Tônica deve ter o laço e o ajuste, mas **visíveis e reversíveis**.
+1. **O ganho do Rocksmith que mais importa para nós é a dificuldade dinâmica por trecho sem reprovação**: a música não acaba por erro, a densidade de notas sobe ou desce por fase, e o jogo guarda o último nível tocado [E:S1]. O Riff Repeater (trecho, velocidade, densidade) é o laço de prática que os jogadores de fato usam [E?:S3]. A crítica recorrente é latência, ajuste automático opaco e desbloqueios [E:S1]. Guitarness deve ter o laço e o ajuste, mas **visíveis e reversíveis**.
 2. **Quem ensina com escuta de microfone perde confiança quando o juiz erra.** As reclamações mais comuns do Simply Guitar são falso erro e falso acerto de acorde [E?:S23]. Isso confirma o desenho do DESIGN.md (veredicto `NaoOuvi`, contestar, "acusar exige mais evidência") [I].
-3. **Sequência (streak) é a mecânica de retenção mais forte e a mais perigosa.** A Duolingo usa e chama de ferramenta eficaz de aprendizado [E:S5]; críticos a veem como motivação por medo de perder [E?:S6]. Para Tônica, a alternativa é uma contagem que só cresce, com "reencontro" ao voltar [I, ver §5].
+3. **Sequência (streak) é a mecânica de retenção mais forte e a mais perigosa.** A Duolingo usa e chama de ferramenta eficaz de aprendizado [E:S5]; críticos a veem como motivação por medo de perder [E?:S6]. Para Guitarness, a alternativa é uma contagem que só cresce, com "reencontro" ao voltar [I, ver §5].
 4. **Prática com espaçamento e intercalada ajuda mesmo, e cabe numa sessão curta.** Espaçar reforça a retenção, e o intervalo ideal cresce com o prazo [E:S10]. Intercalar bate agrupar em tarefas motoras, com ressalvas [E:S13]. Estrutura de sessão: 3 blocos curtos de habilidades diferentes, revisitados em dias seguintes [I].
 5. **Feedback menos frequente e centrado nos acertos aprende melhor.** Reduzir a frequência de feedback melhora a retenção [E?:S11]. Dar feedback após tentativas boas, e dar escolha ao aluno, melhora o aprendizado [E?:S14, E?:S9]. Isso casa com "o erro aparece como informação, o acerto como celebração" e com o metrônomo que some [I].
 6. **Para o metrônomo que some ("gap"), não achei estudo controlado.** A literatura de sincronização com estímulo fala de correção de fase e de período [E?:S12]; que treino com buracos melhora o tempo interno é hipótese razoável, não fato [I]. Tratar como experimento do jogo, com medição própria.
 7. **Modo sem derrota é um padrão consolidado**, com bons exemplos: Zen Mode do Alto (sem placar, sem queda) [E?:S18] e o Assist Mode do Celeste, renomeado de "Cheat Mode" por soar julgador, e cuja marca no save foi removida por excluir [E?:S17]. Lição de linguagem: nada de rótulo de "fácil".
 8. **Evidência para TDAH em jogos é positiva mas frágil**: ensaio com 80 crianças e feedback imediato, recompensas e níveis [E?:S19]; piloto sem controle [E?:S19]; recursos de jogo podem atrapalhar quem tem poucos sintomas [E?:S19]. Para adultos aprendendo violão, quase não há dados; o que fica é princípio (feedback imediato, trechos curtos, escolha) e teste com usuários reais [I].
 9. **Presença de outra pessoa (body doubling) tem evidência fraca.** Levantamentos de empresa e relatos positivos, sem ensaio controlado [E?:S20]. Uma "banda de gatos" que toca junto é uma versão barata e sem pressão social [I].
-10. **O risco ético central é copiar as partes sombrias.** Padrões sombrios de tempo, dinheiro e capital social estão catalogados [E?:S16]. A regra "nada tira nada" da Tônica já elimina quase todos. Faltam regras para notificações, loja e lembretes [I, §10].
+10. **O risco ético central é copiar as partes sombrias.** Padrões sombrios de tempo, dinheiro e capital social estão catalogados [E?:S16]. A regra "nada tira nada" do Guitarness já elimina quase todos. Faltam regras para notificações, loja e lembretes [I, §10].
 
 ---
 
@@ -39,7 +39,7 @@ Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento �
 - **Yousician** escuta o microfone e rotula "perfeito" ou "cedo/tarde" [E?:S23]. Não achei estudo independente de eficácia [E?:S23]; as páginas de "ciência da aprendizagem" são marketing sem estudo citado.
 - **Simply Guitar**: elogiado como envolvente e bom para começar, criticado por falta de profundidade [E?:S23] e por reconhecimento de acorde instável (Mi menor é o exemplo citado) [E?:S23].
 - **Fender Play**: não pesquisei a fundo; sem evidência aqui.
-- **Leitura minha** [I]: a confiança no juiz é o produto. Tônica gasta o grosso do esforço técnico exatamente aqui; o design deve tornar a incerteza visível e o recurso de contestação barato.
+- **Leitura minha** [I]: a confiança no juiz é o produto. Guitarness gasta o grosso do esforço técnico exatamente aqui; o design deve tornar a incerteza visível e o recurso de contestação barato.
 
 ### 2.3 Melodics e Synthesia
 
@@ -59,14 +59,14 @@ Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento �
 - A Duolingo descreve o streak como "ferramenta eficaz de aprendizado" e diz que a animação de marcos funciona como "power-up"; trocou a chama por uma fênix por ser mais universal; não publica números de retenção nesse post [E:S5].
 - Números de terceiros (primeira semana é a mais frágil; congelamento cortou abandono em 21%; animação nova elevou a retenção de 7 dias em 1,7%) vêm de resumos de podcast e estudos de caso, **não confirmados** [E?:S6]. Não usar como argumento de projeto.
 - A tensão ética: congelamento vendido com moeda do jogo mistura retenção e monetização [E?:S6]; um crítico acusa o streak de fazer mais trabalho de motivação do que a lição [E?:S6].
-- **Zen Mode do Alto**: remove placar, moedas e quedas; nasceu de e-mails de jogadores que achavam o jogo relaxante [E?:S18]. [I] Referência certa para o "modo sem pressão" que a Tônica deve oferecer como porta de entrada.
+- **Zen Mode do Alto**: remove placar, moedas e quedas; nasceu de e-mails de jogadores que achavam o jogo relaxante [E?:S18]. [I] Referência certa para o "modo sem pressão" que o Guitarness deve oferecer como porta de entrada.
 - **Padrão de sessão curta** de jogos casuais (sessões de 2 a 5 minutos, pausa sem perda): consenso de gênero, sem fonte aqui [I].
 
 ---
 
 ## 3. Evidência de aprendizagem e prática
 
-| Tema | O que a fonte sustenta | Uso na Tônica |
+| Tema | O que a fonte sustenta | Uso no Guitarness |
 |---|---|---|
 | Prática deliberada | Ericsson et al. 1993 ligaram prática solitária acumulada ao nível, mas a replicação duplo-cega de 2019 achou efeito menor, e a definição é disputada [E?:S27] | Não prometer "10 mil horas". Prática com meta e retorno vale, mas o tamanho do efeito é debatido [I] |
 | Espaçamento | A revisão de 2006 (839 avaliações, 317 experimentos): o intervalo ótimo entre sessões cresce com o prazo desejado de retenção [E:S10] (tarefas verbais, não motoras) | Revisão espaçada de habilidades entre dias; transferência para motor é inferência [I] |
@@ -102,7 +102,7 @@ Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento �
 ## 5. Juice sem poluição, e alternativas a combo
 
 - **Juice**: "máximo de saída por mínimo de entrada"; efeitos pequenos de resposta tornam o jogo mais satisfatório [E?:S7]. Há uma palestra posterior defendendo moderação [E?:S7].
-- **Regras para Tônica** [I]:
+- **Regras para Guitarness** [I]:
   1. Cada efeito **carrega informação** (qual corda, quão cedo ou tarde) ou **não existe**. Brilho que não diz nada é ruído.
   2. **Um canal por vez**: o ataque mexe a seta (posição = adiantado/atrasado); o veredicto das cordas acende o painel; o som da banda responde por último. Nunca os três ao mesmo tempo no mesmo ponto da tela.
   3. **Acerto soa na hora, erro baixo e depois** (já no DESIGN §5).
@@ -144,7 +144,7 @@ Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento �
 
 ## 7. Progressão e meta
 
-- **Três necessidades** (autonomia, competência, relação) predizem prazer e jogar de novo [E?:S15]. Mapa para Tônica [I]: autonomia = escolha de cartão, nível, fim da sessão; competência = marcas de domínio e músicas completas; relação = banda de gatos, e (opcional) troca assíncrona.
+- **Três necessidades** (autonomia, competência, relação) predizem prazer e jogar de novo [E?:S15]. Mapa para Guitarness [I]: autonomia = escolha de cartão, nível, fim da sessão; competência = marcas de domínio e músicas completas; relação = banda de gatos, e (opcional) troca assíncrona.
 - **Biblioteca de músicas**: cada música importada ganha capa de disco com 3 níveis (síntese inicial de design, não publicada, §4). [I] A biblioteca é o "mundo" do jogador. Um bom primeiro conjunto são 5 a 8 músicas autorais curtas, escritas para ensinar um conceito por música (evita problema de direitos e deixa o conteúdo no tom certo).
 - **Banda e avatar**: instrumentos que entram conforme o progresso [DESIGN §5]; o jogador escolhe o gato (cor, visor, fones). Cosméticos só **ganhos jogando** e **nunca vendidos por moeda de jogo** [I].
 - **Desbloqueios**: o Rocksmith foi criticado pelo desbloqueio [E:S1]. [I] Regra: **tudo o que ensina está aberto desde o início**; desbloqueio é só cosmético, palco e capa.
@@ -157,7 +157,7 @@ Data: 16/11/2026. Todos os acessos web foram feitos nesta data. Este documento �
 
 Impacto e esforço: A/M/B (Alto, Médio, Baixo). Risco = risco para o jogador ansioso com TDAH.
 
-| # | Ideia | Onde funcionou | Como aplica à Tônica | Impacto | Esforço | Risco |
+| # | Ideia | Onde funcionou | Como aplica à Guitarness | Impacto | Esforço | Risco |
 |---|---|---|---|---|---|---|
 | 1 | Sem reprovação; falha só pausa e reposiciona | Rocksmith [E:S1]; Alto Zen [E?:S18] | Regra dura já existente; pausa gentil quando o jogador se perde | A | B | B |
 | 2 | Laço de trecho com velocidade e densidade (Riff Repeater) | Rocksmith [E:S1] | Já no DESIGN (laço, andamento 40 a 120%); comando de voz "repete" | A | M | B |
@@ -258,8 +258,8 @@ Pular um dia só adia: o jogo retoma com "bom te ver", sem lembrar quantos dias 
 
 | Referência | O que é identitário | O que fazer |
 |---|---|---|
-| Rocksmith | Faixas coloridas por corda com as cores exatas do jogo; retângulos que "giram" para acorde; Guitarcade com o formato tipo Galaga; nome "Riff Repeater", "Session Mode" | Usar o laço, mas com nome próprio ("Ensaio no beco"), a paleta de intervalos da Tônica (`theory.js`) e minijogos com arte própria |
-| Guitar Hero e Rock Band | Pista em perspectiva com os cinco botões coloridos; ícone de estrela; "Star Power", "Overdrive"; multidão que vaia | Evitar estrela e multidão que reage mal; o palco da Tônica não vaia |
+| Rocksmith | Faixas coloridas por corda com as cores exatas do jogo; retângulos que "giram" para acorde; Guitarcade com o formato tipo Galaga; nome "Riff Repeater", "Session Mode" | Usar o laço, mas com nome próprio ("Ensaio no beco"), a paleta de intervalos do Guitarness (`theory.js`) e minijogos com arte própria |
+| Guitar Hero e Rock Band | Pista em perspectiva com os cinco botões coloridos; ícone de estrela; "Star Power", "Overdrive"; multidão que vaia | Evitar estrela e multidão que reage mal; o palco do Guitarness não vaia |
 | Duolingo | Coruja, chama ou fênix de streak, "Duo", ligas e gemas, tom de ameaça bem-humorada | Nenhuma mascote que cobra; nenhuma liga; nenhum tom passivo-agressivo |
 | Yousician | Escala de estrelas por trecho, notas rotuladas "Perfect" | Rótulos próprios, sem estrelas |
 | Beat Saber | Sabres, blocos que cortam, estética neon em túnel | Não usar formato de corte nem túnel |

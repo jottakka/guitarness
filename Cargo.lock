@@ -334,21 +334,92 @@ dependencies = [
 ]
 
 [[package]]
+name = "guitarness-audio"
+version = "0.1.0"
+dependencies = [
+ "assert_no_alloc",
+ "cpal",
+ "guitarness-dsp",
+ "guitarness-sim",
+ "rtrb",
+ "serde_json",
+]
+
+[[package]]
+name = "guitarness-cli"
+version = "0.1.0"
+dependencies = [
+ "assert_no_alloc",
+ "guitarness-audio",
+ "guitarness-core",
+ "guitarness-dsp",
+ "guitarness-session",
+ "guitarness-sim",
+ "guitarness-verify",
+ "hound",
+ "serde_json",
+]
+
+[[package]]
+name = "guitarness-core"
+version = "0.1.0"
+dependencies = [
+ "guitarness-dsp",
+ "guitarness-sim",
+ "guitarness-theory",
+ "serde_json",
+]
+
+[[package]]
+name = "guitarness-dsp"
+version = "0.1.0"
+dependencies = [
+ "assert_no_alloc",
+ "criterion",
+ "hound",
+ "realfft",
+ "serde_json",
+]
+
+[[package]]
 name = "guitarness-learn"
 version = "0.1.0"
 dependencies = [
+ "guitarness-core",
  "serde_json",
- "tonica-core",
 ]
+
+[[package]]
+name = "guitarness-session"
+version = "0.1.0"
+dependencies = [
+ "guitarness-audio",
+ "guitarness-core",
+ "guitarness-dsp",
+ "guitarness-sim",
+ "hound",
+ "serde_json",
+]
+
+[[package]]
+name = "guitarness-sim"
+version = "0.1.0"
+dependencies = [
+ "guitarness-dsp",
+]
+
+[[package]]
+name = "guitarness-theory"
+version = "0.1.0"
 
 [[package]]
 name = "guitarness-verify"
 version = "0.1.0"
 dependencies = [
+ "guitarness-core",
+ "guitarness-dsp",
+ "guitarness-sim",
  "realfft",
- "tonica-core",
- "tonica-dsp",
- "tonica-sim",
 ]
 
 [[package]]
@@ -1010,77 +1081,6 @@ checksum = "baa693a8032d7e1cada7d0041e96126df243179ff061456783ac7f12bda4744c"
 dependencies = [
  "winnow",
 ]
-
-[[package]]
-name = "tonica-audio"
-version = "0.1.0"
-dependencies = [
- "assert_no_alloc",
- "cpal",
- "rtrb",
- "serde_json",
- "tonica-dsp",
- "tonica-sim",
-]
-
-[[package]]
-name = "tonica-cli"
-version = "0.1.0"
-dependencies = [
- "assert_no_alloc",
- "guitarness-verify",
- "hound",
- "serde_json",
- "tonica-audio",
- "tonica-core",
- "tonica-dsp",
- "tonica-session",
- "tonica-sim",
-]
-
-[[package]]
-name = "tonica-core"
-version = "0.1.0"
-dependencies = [
- "serde_json",
- "tonica-dsp",
- "tonica-sim",
- "tonica-theory",
-]
-
-[[package]]
-name = "tonica-dsp"
-version = "0.1.0"
-dependencies = [
- "assert_no_alloc",
- "criterion",
- "hound",
- "realfft",
- "serde_json",
-]
-
-[[package]]
-name = "tonica-session"
-version = "0.1.0"
-dependencies = [
- "hound",
- "serde_json",
- "tonica-audio",
- "tonica-core",
- "tonica-dsp",
- "tonica-sim",
-]
-
-[[package]]
-name = "tonica-sim"
-version = "0.1.0"
-dependencies = [
- "tonica-dsp",
-]
-
-[[package]]
-name = "tonica-theory"
-version = "0.1.0"
 
 [[package]]
 name = "transpose"

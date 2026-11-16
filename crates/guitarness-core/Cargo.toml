@@ -1,0 +1,15 @@
+[package]
+name = "guitarness-core"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+guitarness-theory.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+guitarness-sim.workspace = true
+guitarness-dsp.workspace = true

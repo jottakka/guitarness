@@ -1,6 +1,6 @@
+use guitarness_core::chart::{Chart, Dir, Event, EventKind, Loc, Span, Style, Voicing};
 use guitarness_verify::hyp::{MAX_ALTS, confusion_set};
 use guitarness_verify::types::{Ask, ConfusionSet, HypKind};
-use tonica_core::chart::{Chart, Dir, Event, EventKind, Loc, Span, Style, Voicing};
 
 fn voicing(frets: [i8; 6], req: Option<&str>) -> Voicing {
     Voicing {
@@ -42,7 +42,7 @@ fn loc(i: usize) -> Loc {
     Loc { tier: 0, index: i }
 }
 
-/// The nine `tonica-sim` chords (copied by hand, not read from the sim).
+/// The nine `guitarness-sim` chords (copied by hand, not read from the sim).
 const NINE: [(&str, [i8; 6]); 9] = [
     ("C", [-1, 3, 2, 0, 1, 0]),
     ("D", [-1, -1, 0, 2, 3, 2]),

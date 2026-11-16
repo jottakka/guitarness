@@ -7,10 +7,10 @@ use std::fs::{self, File, OpenOptions};
 use std::io::{self, Write};
 use std::path::{Path, PathBuf};
 
+use guitarness_core::gates::GateState;
+use guitarness_core::pulse::Exercise;
+use guitarness_core::verdict::{VerdictType, Why};
 use serde_json::{Map, Value, json};
-use tonica_core::gates::GateState;
-use tonica_core::pulse::Exercise;
-use tonica_core::verdict::{VerdictType, Why};
 
 use crate::display::DisplayLedger;
 use crate::types::{

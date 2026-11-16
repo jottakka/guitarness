@@ -1,6 +1,6 @@
 //! Plain data types of the chord verifier (the verifier/learner design plan §4).
 
-use tonica_core::verdict::VerdictType;
+use guitarness_core::verdict::VerdictType;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Ask {

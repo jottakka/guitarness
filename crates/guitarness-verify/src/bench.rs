@@ -18,8 +18,8 @@ use std::fmt::Write as _;
 use std::sync::Arc;
 use std::time::Instant;
 
-use tonica_core::gates::{ALL_TYPES, GateEntry, GateEvidence, GateRule, GateState, GateTable};
-use tonica_core::report::{ConfusionReport, Observation, Outcome, TapeSource, Truth as Label};
+use guitarness_core::gates::{ALL_TYPES, GateEntry, GateEvidence, GateRule, GateState, GateTable};
+use guitarness_core::report::{ConfusionReport, Observation, Outcome, TapeSource, Truth as Label};
 
 use crate::decide::decide;
 use crate::excite::{ExciteConfig, cut};
@@ -256,7 +256,7 @@ pub fn frac(k: usize, n: usize) -> f64 {
 
 /// Wilson 95% interval for `k` of `n` (same formula as the report's).
 pub fn wilson(k: usize, n: usize) -> (f64, f64) {
-    tonica_core::report::wilson95(k as u32, n as u32)
+    guitarness_core::report::wilson95(k as u32, n as u32)
 }
 
 /// Thresholds for the worst-case conversion, taken from the witness's own operating point: a

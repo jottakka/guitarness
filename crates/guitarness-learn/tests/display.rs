@@ -1,8 +1,8 @@
+use guitarness_core::gates::GateState;
+use guitarness_core::pulse::Exercise;
+use guitarness_core::verdict::VerdictType;
 use guitarness_learn::display::{DisplayLedger, Mono};
 use guitarness_learn::types::*;
-use tonica_core::gates::GateState;
-use tonica_core::pulse::Exercise;
-use tonica_core::verdict::VerdictType;
 
 /// SplitMix64.
 struct Rng(u64);

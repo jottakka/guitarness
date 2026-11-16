@@ -1,0 +1,24 @@
+[package]
+name = "guitarness-audio"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+guitarness-dsp.workspace = true
+# cpal is used only by src/cpal_backend.rs.
+cpal = { workspace = true, features = ["realtime"] }
+rtrb.workspace = true
+# Only src/calib.rs: the calibration profile (no serde derive).
+serde_json.workspace = true
+assert_no_alloc = { version = "=1.1.2", default-features = false, optional = true }
+
+[features]
+# Run the callbacks inside assert_no_alloc (the binary installs AllocDisabler).
+rt-audit = ["dep:assert_no_alloc"]
+
+[dev-dependencies]
+assert_no_alloc = { version = "=1.1.2", default-features = false }
+guitarness-sim = { path = "../guitarness-sim" }

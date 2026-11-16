@@ -1,5 +1,7 @@
 # Guitarness
 
+_Antes chamado Tônica._
+
 Jogo para aprender violão e guitarra no PC, tocando o instrumento de verdade. O microfone ouve, e o jogo julga os golpes. O núcleo é em Rust, e a parte visual usa o motor Bevy.
 
 O público principal é o adulto iniciante, ansioso ou com TDAH. Por isso o jogo segue estas regras:
@@ -24,9 +26,9 @@ Estas imagens saem do modo `--screenshot` do jogo, que roda sem janela. Mostram 
 
 | Pulso em 2D | Pulso em 3D |
 |---|---|
-| ![Pulso em 2D](crates/tonica-game/shots/pulse-2d.png) | ![Pulso em 3D](crates/tonica-game/shots/pulse-3d.png) |
+| ![Pulso em 2D](crates/guitarness-game/shots/pulse-2d.png) | ![Pulso em 3D](crates/guitarness-game/shots/pulse-3d.png) |
 | **Resumo da rodada** | **Passagem de som** |
-| ![Resumo da rodada](crates/tonica-game/shots/pulse-summary.png) | ![Passagem de som](crates/tonica-game/shots/soundcheck-strum.png) |
+| ![Resumo da rodada](crates/guitarness-game/shots/pulse-summary.png) | ![Passagem de som](crates/guitarness-game/shots/soundcheck-strum.png) |
 
 ## Requisitos
 
@@ -36,44 +38,44 @@ Estas imagens saem do modo `--screenshot` do jogo, que roda sem janela. Mostram 
 
 ## Como compilar e testar
 
-O repositório tem dois workspaces Cargo. O principal fica na raiz. O jogo (Bevy) é um workspace separado em `crates/tonica-game`, com lockfile e pasta `target` próprios.
+O repositório tem dois workspaces Cargo. O principal fica na raiz. O jogo (Bevy) é um workspace separado em `crates/guitarness-game`, com lockfile e pasta `target` próprios.
 
 ```
 # núcleo, DSP, sessão e CLI (workspace da raiz)
 cargo test --release
 
 # jogo (workspace separado)
-cd crates/tonica-game
+cd crates/guitarness-game
 cargo test --release
 ```
 
 O jogo também roda sem janela para gerar capturas de tela:
 
 ```
-cd crates/tonica-game
+cd crates/guitarness-game
 cargo run --release -- --screenshot ../../saida-capturas
 ```
 
 Outros comandos úteis:
 
 ```
-cargo bench -p tonica-dsp --bench frame     # custo por quadro do detector
-cargo run --release -p tonica-cli -- analyze legacy/web-demo/test/golden/B-soando.wav
+cargo bench -p guitarness-dsp --bench frame     # custo por quadro do detector
+cargo run --release -p guitarness-cli -- analyze legacy/web-demo/test/golden/B-soando.wav
 ```
 
-## Linha de comando `tonica`
+## Linha de comando `guitarness`
 
-O binário `tonica` (crate `tonica-cli`) reúne as ferramentas que não precisam do jogo. Todos os subcomandos, menos `analyze`, aceitam `--help`. Com `--fake`, vários deles rodam num backend falso, sem hardware.
+O binário `guitarness` (crate `guitarness-cli`) reúne as ferramentas que não precisam do jogo. Todos os subcomandos, menos `analyze`, aceitam `--help`. Com `--fake`, vários deles rodam num backend falso, sem hardware.
 
 | Comando | O que faz |
 |---|---|
-| `tonica analyze arquivo.wav` | Roda o pipeline de detecção real num WAV e lista os eventos. |
-| `tonica audio devices` / `probe` / `soak` | Lista dispositivos, sonda entrada e saída e testa estabilidade. Só toca som com `--beep`. |
-| `tonica audio record PASTA --take ROTULO` | Grava uma fita de tomada de referência com rótulo. |
-| `tonica calibrate` | Passagem de som: mede a latência do sistema (`L_rt`) e o viés do jogador e grava um perfil. |
-| `tonica tune` | Afinador de linha de comando. Só escuta, não toca nada. |
-| `tonica replay FITA...` | Reexecuta fitas no juiz atual. Mostra diferenças, contestações e a tabela de confusão. |
-| `tonica verify FITA...` | Mostra o que a testemunha de acordes ouve nas fitas. Só relata, não muda veredito. |
+| `guitarness analyze arquivo.wav` | Roda o pipeline de detecção real num WAV e lista os eventos. |
+| `guitarness audio devices` / `probe` / `soak` | Lista dispositivos, sonda entrada e saída e testa estabilidade. Só toca som com `--beep`. |
+| `guitarness audio record PASTA --take ROTULO` | Grava uma fita de tomada de referência com rótulo. |
+| `guitarness calibrate` | Passagem de som: mede a latência do sistema (`L_rt`) e o viés do jogador e grava um perfil. |
+| `guitarness tune` | Afinador de linha de comando. Só escuta, não toca nada. |
+| `guitarness replay FITA...` | Reexecuta fitas no juiz atual. Mostra diferenças, contestações e a tabela de confusão. |
+| `guitarness verify FITA...` | Mostra o que a testemunha de acordes ouve nas fitas. Só relata, não muda veredito. |
 
 O passo a passo com microfone real está no [roteiro da primeira sessão](docs/roteiro-primeira-sessao.md).
 
@@ -81,23 +83,19 @@ O passo a passo com microfone real está no [roteiro da primeira sessão](docs/r
 
 | Caminho | O que é |
 |---|---|
-| `crates/tonica-dsp` | Detector de altura e de ataque em tempo real, sem alocação no caminho por quadro. |
-| `crates/tonica-theory` | Notas, intervalos (notação brasileira), escalas, acordes e braço. |
-| `crates/tonica-core` | Regras do jogo determinísticas: gráfico, juiz do Pulso, portões, estatísticas e relatório. Sem áudio, sem arquivos. |
-| `crates/tonica-sim` | Violão virtual: cordas, rasgueados, salas e microfones sintéticos, com verdade de referência para as bancadas. |
-| `crates/tonica-audio` | Áudio ao vivo: abstração de backend (real com `cpal` e falso com relógio virtual), mixer, relógios, captura e calibração. |
-| `crates/tonica-session` | Cola entre o motor de áudio e as regras: sessão, fita, replay e bancada falsa. |
-| `crates/tonica-cli` | O binário `tonica`. |
-| `crates/guitarness-learn` | Modelo do aluno: evidência, domínio, placar exibido, agenda de revisão e armazenamento. |
-| `crates/guitarness-verify` | Verificador de acordes: conjuntos de confusão fechados, testemunha DSP, regra de decisão e bancada sintética. |
-| `crates/tonica-game` | O jogo em Bevy (workspace separado), com fonte e capturas de tela. |
+| `crates/guitarness-dsp` | Detector de altura e de ataque em tempo real, sem alocação no caminho por quadro. |
+| `crates/guitarness-theory` | Notas, intervalos (notação brasileira), escalas, acordes e braço. |
+| `crates/guitarness-core` | Regras do jogo determinísticas: gráfico, juiz do Pulso, portões, contrato por evento, estatísticas e relatório. Sem áudio, sem arquivos. |
+| `crates/guitarness-sim` | Violão virtual: cordas, rasgueados, salas e microfones sintéticos, com verdade de referência para as bancadas. |
+| `crates/guitarness-audio` | Áudio ao vivo: abstração de backend (real com `cpal` e falso com relógio virtual), mixer, relógios, captura e calibração. |
+| `crates/guitarness-session` | Cola entre o motor de áudio e as regras: sessão, fita, replay e bancada falsa. |
+| `crates/guitarness-cli` | O binário `guitarness`. |
+| `crates/guitarness-learn` | Modelo do aluno: evidência, domínio, placar exibido (só sobe), agenda de revisão oculta, escolha do próximo bloco, treinador por regras e armazenamento. |
+| `crates/guitarness-verify` | Verificador de acordes: conjuntos de confusão fechados, testemunha DSP, regra de decisão e bancada sintética. Os portões de acorde seguem trancados. |
+| `crates/guitarness-game` | O jogo em Bevy (workspace separado), com fonte e capturas de tela. |
 | `docs/` | Documentação (veja abaixo). |
 | `legacy/web-demo` | Demo web original em JavaScript. É a referência dos testes `golden` do DSP. |
 | `LICENSES/` | Textos de licença de terceiros. |
-
-### Nota sobre nomes
-
-O projeto se chama **Guitarness**. Quase todos os crates e o binário ainda usam o prefixo legado `tonica-`, do nome antigo. A renomeação está planejada e será feita em uma mudança separada. Alguns textos em `docs/` também ainda dizem "Tônica".
 
 ## Documentação
 
@@ -124,6 +122,6 @@ O código é distribuído sob a [licença MIT](LICENSE). Há quatro exceções, 
 Contribuições são bem-vindas. Abra uma issue antes de mudanças grandes. Antes de enviar um pull request:
 
 - Rode `cargo fmt --all --check` e `cargo clippy --workspace --all-targets -- -D warnings`.
-- Rode `cargo test --release` na raiz (e em `crates/tonica-game`, se mexer no jogo).
+- Rode `cargo test --release` na raiz (e em `crates/guitarness-game`, se mexer no jogo).
 - Mantenha a documentação em português do Brasil.
 - Não adicione gravações de áudio, tablaturas ou letras de músicas protegidas por direitos autorais.

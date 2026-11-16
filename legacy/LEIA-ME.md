@@ -1,6 +1,6 @@
 # Demo web legada (Tônica)
 
-Protótipo em JavaScript que deu origem ao núcleo em Rust. Hoje serve de referência: os testes do `tonica-dsp` comparam o detector em Rust com a saída guardada em `web-demo/test/golden/`. A demo é anterior ao nome Guitarness e ainda se chama Tônica. Veja o [README do repositório](../README.md).
+Protótipo em JavaScript que deu origem ao núcleo em Rust. Hoje serve de referência: os testes do `guitarness-dsp` comparam o detector em Rust com a saída guardada em `web-demo/test/golden/`. A demo é anterior ao nome Guitarness e ainda se chama Tônica. Veja o [README do repositório](../README.md).
 
 ## O que tem aqui
 

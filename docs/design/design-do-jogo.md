@@ -1,4 +1,4 @@
-# Tônica PC — DESIGN v1
+# Guitarness PC — DESIGN v1
 
 > **Adendo 01 (16/11/2026):** vistas Braço 3D / Pista 3D / Fita 2D, tipos de golpe, modo Pulso (treino de tempo), estado medido do detector de ataque e da calibração. Ver [adendo 01](adendo-01.md).
 
@@ -162,11 +162,11 @@ pub struct StrumVerdict { pub expect_id: u32, pub t_onset: SampleTime, pub dt_ms
 
 FA = erro real que saiu `Ok`. FR = toque correto que saiu `Errado`. NO = fração de `NaoOuvi`. Toda taxa sai com limite superior de 95%; zero erros em 150 tentativas sustenta "≤ 2%" (regra do três).
 
-**(a) Bancada sintética (`tonica-sim`, CI).** Karplus-Strong por corda com dispersão (inarmonicidade), posição da palhetada, corpo por soma de modos (sem IR de terceiros), simpatia pelo cavalete, ruído rosa + 60 Hz, microfone de notebook (corte em 150 Hz). Grade: 9 acordes (C, D, E, G, A, Am, Em, Dm, F) × golpe (baixo, cima, lento 120 ms, rápido 15 ms) × 3 dinâmicas × erro injetado (nenhum; cada `Must` ausente, abafada, casa ±1, solta; cada `MustNot` golpeada; acorde do conjunto de confusão; acorde anterior) × contexto (silêncio; sobre acorde soando) × SNR (40, 30, 20 dB) × desafinação ±10 cents × 3 violões virtuais, cada um calibrado pelo fluxo de 1.6.
+**(a) Bancada sintética (`guitarness-sim`, CI).** Karplus-Strong por corda com dispersão (inarmonicidade), posição da palhetada, corpo por soma de modos (sem IR de terceiros), simpatia pelo cavalete, ruído rosa + 60 Hz, microfone de notebook (corte em 150 Hz). Grade: 9 acordes (C, D, E, G, A, Am, Em, Dm, F) × golpe (baixo, cima, lento 120 ms, rápido 15 ms) × 3 dinâmicas × erro injetado (nenhum; cada `Must` ausente, abafada, casa ±1, solta; cada `MustNot` golpeada; acorde do conjunto de confusão; acorde anterior) × contexto (silêncio; sobre acorde soando) × SNR (40, 30, 20 dB) × desafinação ±10 cents × 3 violões virtuais, cada um calibrado pelo fluxo de 1.6.
 
 **(b) Bases públicas.** GuitarSet (captador hexafônico: corda e casa por nota; usar o canal de microfone) e IDMT-SMT-Guitar (acordes). Positivos: julgar com esperado = verdade. Negativos: **perturbar a hipótese** (tirar corda, somar corda, casa ±1 ou ±2, trocar pelo acorde confundível) sobre o mesmo áudio. Sem calibração do violão, é limite inferior. Primeiro medir (regra: medir primeiro); o ADR-003 fixa as metas depois. Licenças a conferir antes de baixar.
 
-**(c) Violão do jogador.** `tonica-cli record-script`, 10 min: 8 acordes × 20 golpes corretos (160) + 8 acordes × 8 erros pedidos × 2 (128; ex.: "sem a 1ª", "com a 6ª solta", "Am no lugar de C"). O rótulo é o pedido, confirmado por pedal. Vira regressão, no microfone do notebook e num USB. Com esse tamanho os portões valem no agregado; por tipo de erro há só tendência, até as contestações engrossarem o conjunto.
+**(c) Violão do jogador.** `guitarness-cli record-script`, 10 min: 8 acordes × 20 golpes corretos (160) + 8 acordes × 8 erros pedidos × 2 (128; ex.: "sem a 1ª", "com a 6ª solta", "Am no lugar de C"). O rótulo é o pedido, confirmado por pedal. Vira regressão, no microfone do notebook e num USB. Com esse tamanho os portões valem no agregado; por tipo de erro há só tendência, até as contestações engrossarem o conjunto.
 
 | Julgamento | Sintético: portão de CI (FA / FR / NO) | Jogador: portão para ligar o julgamento |
 |---|---|---|
@@ -224,7 +224,7 @@ Entrada: texto ou **apertar para falar** (pedal HID ou barra de espaço); enquan
 1. **Determinístico primeiro.** A fala passa pelo Vosk small-pt em gramática fechada (as frases são os comandos); texto digitado passa por ~40 padrões. Sai uma chamada de ferramenta, sem LLM, em menos de 200 ms.
 2. **LLM só no que sobrar.** Fala livre ("essa parte do refrão tá difícil") é transcrita e vai ao cérebro `helper`, com estado compacto (modo, andamento, camada, acerto dos últimos 8 compassos) e os esquemas. Ele devolve no máximo uma chamada e uma frase. Sem resposta a tempo: "diga mais devagar, mais rápido, mais fácil ou repete".
 
-Ferramentas: lista fechada, validada no `tonica-core`. Cada chamada vira um `PendingChange` aplicado **no próximo compasso**, com chip visível antes de valer e "desfaz".
+Ferramentas: lista fechada, validada no `guitarness-core`. Cada chamada vira um `PendingChange` aplicado **no próximo compasso**, com chip visível antes de valer e "desfaz".
 
 | Ferramenta | Limites |
 |---|---|
@@ -270,15 +270,15 @@ Trait `Brain` com adaptadores `openai-chat` (cobre Ollama e llama.cpp, localment
 
 | Crate | Responsabilidade |
 |---|---|
-| `tonica-dsp` | filtros, decimação, STFT, fluxo, MPM, `presence`; `judge` (átomos, dicionário, NNLS, LLR, SPRT); `calib`; API C |
-| `tonica-audio` | dispositivos `cpal`, `ClockMap`, latência, **mixer próprio**, decodificação |
-| `tonica-theory` | notas, intervalos, gramática de acordes, tabela de pegadas (dados), capo, digitação, padrões de batida |
-| `tonica-core` | `Chart`, importadores, `ChartValidator`, agenda de `Expect`, pontuação, domínio, diretor por regras, validadores de ferramenta |
-| `tonica-agent` | `Brain`, adaptadores, ferramentas, intenção determinística, rastros JSONL, orçamento, bancada |
-| `tonica-sim` | violão virtual, jogador virtual com erros injetados, cenários com asserções, tabelas FA/FR |
-| `tonica-game` | Bevy: estados, pista, pauta, painel de cordas, efeitos, BRP |
-| `tonica-cli` | julgar WAV contra chart, `record-script`, calibrar, bancadas, importar música |
-| `tonica-ml` (novo, opcional) | `StringNet` e Beat This! em `tract-onnx` |
+| `guitarness-dsp` | filtros, decimação, STFT, fluxo, MPM, `presence`; `judge` (átomos, dicionário, NNLS, LLR, SPRT); `calib`; API C |
+| `guitarness-audio` | dispositivos `cpal`, `ClockMap`, latência, **mixer próprio**, decodificação |
+| `guitarness-theory` | notas, intervalos, gramática de acordes, tabela de pegadas (dados), capo, digitação, padrões de batida |
+| `guitarness-core` | `Chart`, importadores, `ChartValidator`, agenda de `Expect`, pontuação, domínio, diretor por regras, validadores de ferramenta |
+| `guitarness-agent` | `Brain`, adaptadores, ferramentas, intenção determinística, rastros JSONL, orçamento, bancada |
+| `guitarness-sim` | violão virtual, jogador virtual com erros injetados, cenários com asserções, tabelas FA/FR |
+| `guitarness-game` | Bevy: estados, pista, pauta, painel de cordas, efeitos, BRP |
+| `guitarness-cli` | julgar WAV contra chart, `record-script`, calibrar, bancadas, importar música |
+| `guitarness-ml` (novo, opcional) | `StringNet` e Beat This! em `tract-onnx` |
 
 ### 4.2 Threads
 
@@ -286,12 +286,12 @@ Trait `Brain` com adaptadores `openai-chat` (cobre Ollama e llama.cpp, localment
 callback de entrada (tempo real): filtro, decimação, detector por quadro
    └─ rtrb ─▶ thread do juiz (prioridade alta, sem alocação, acorda a cada ~1 ms):
               segmentação, casamento com Expect, ajuste, SPRT
-                 └─ rtrb ─▶ Bevy (drena no PreUpdate) ─▶ tonica-core ─▶ tela
+                 └─ rtrb ─▶ Bevy (drena no PreUpdate) ─▶ guitarness-core ─▶ tela
 callback de saída: mixer; comandos agendados por rtrb; carimbos para o ClockMap
 auxiliares: ML, decodificação e esticamento, agente e STT, disco
 ```
 
-Ajuste sobre a decisão inicial do detector: o detector por quadro fica no callback, como decidido; o ajuste de acorde (custo variável, até 500 µs) vai para a thread do juiz. Entra no ADR-002, com medição. O `tonica-core` é função pura do fluxo de `JudgeEvent`: toda sessão grava `events.jsonl` e pode ser reexecutada.
+Ajuste sobre a decisão inicial do detector: o detector por quadro fica no callback, como decidido; o ajuste de acorde (custo variável, até 500 µs) vai para a thread do juiz. Entra no ADR-002, com medição. O `guitarness-core` é função pura do fluxo de `JudgeEvent`: toda sessão grava `events.jsonl` e pode ser reexecutada.
 
 **Reprodução: mixer próprio** no fluxo de saída do `cpal`. O `bevy_seedling` 0.8 não acompanha o Bevy 0.20, e um motor só significa um relógio só. São 32 vozes pré-alocadas com início exato por amostra e uma voz de streaming. Andamento do áudio do jogador: pré-render (WSOLA) fora do tempo real, com troca no compasso. Firewheel direto é a alternativa se faltar grafo de efeitos.
 
@@ -322,7 +322,7 @@ Da [pesquisa do ecossistema Rust](../pesquisa/ecossistema-rust-audio.md), a conf
 
 ### 4.5 Testes sem tela
 
-- `tonica-sim` renderiza o WAV do cenário e alimenta o **mesmo código** do callback por um dispositivo falso com relógio virtual; compara os `JudgeEvent` com as asserções. Cenários de corda errada: `d_low_e_struck`, `c_as_am`, `g_missing_string1`, `f_dead_b_string`, `late_change_g_to_c`, `open_strings_only`, mais os de 1.11.
+- `guitarness-sim` renderiza o WAV do cenário e alimenta o **mesmo código** do callback por um dispositivo falso com relógio virtual; compara os `JudgeEvent` com as asserções. Cenários de corda errada: `d_low_e_struck`, `c_as_am`, `g_missing_string1`, `f_dead_b_string`, `late_change_g_to_c`, `open_strings_only`, mais os de 1.11.
 - Jogo: app Bevy com `MinimalPlugins` e os sistemas do núcleo, sem janela, tocado pelo jogador virtual. Agente: `FakeBrain` (válida, inválida, lenta, vazia).
 - Aceite visual por capturas via BRP exige sessão gráfica; Bevy por SSH no Windows e a licença da crate `guitarpro` não estão verificados.
 

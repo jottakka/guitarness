@@ -1,0 +1,28 @@
+[package]
+name = "guitarness-cli"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "guitarness"
+path = "src/main.rs"
+
+[dependencies]
+guitarness-dsp.workspace = true
+hound.workspace = true
+guitarness-audio.workspace = true
+guitarness-core.workspace = true
+guitarness-session.workspace = true
+guitarness-sim.workspace = true
+guitarness-verify.workspace = true
+serde_json.workspace = true
+# Optional: the plan declares it directly here (default features off); the
+# workspace entry stays unchanged.
+assert_no_alloc = { version = "=1.1.2", default-features = false, optional = true }
+
+[features]
+# Run the audio callbacks under assert_no_alloc and install its allocator.
+rt-audit = ["dep:assert_no_alloc", "guitarness-audio/rt-audit"]

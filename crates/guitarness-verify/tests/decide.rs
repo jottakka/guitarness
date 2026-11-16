@@ -1,9 +1,9 @@
 //! Decision rule against hand-built witness outputs (no DSP involved).
 
+use guitarness_core::gates::{ALL_TYPES, GateEntry, GateEvidence, GateRule, GateState, GateTable};
+use guitarness_core::verdict::VerdictType;
 use guitarness_verify::decide::decide;
 use guitarness_verify::types::*;
-use tonica_core::gates::{ALL_TYPES, GateEntry, GateEvidence, GateRule, GateState, GateTable};
-use tonica_core::verdict::VerdictType;
 
 fn hyp(kind: HypKind) -> Hypothesis {
     Hypothesis {

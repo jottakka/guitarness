@@ -2,10 +2,10 @@
 
 use std::collections::BTreeMap;
 
-use tonica_core::chart::Chart;
-use tonica_core::gates::{GateState, GateTable};
-use tonica_core::pulse::expectations;
-use tonica_core::verdict::{Attack, JudgeOut, PulseVerdict, Timing, VerdictType, Why};
+use guitarness_core::chart::Chart;
+use guitarness_core::gates::{GateState, GateTable};
+use guitarness_core::pulse::expectations;
+use guitarness_core::verdict::{Attack, JudgeOut, PulseVerdict, Timing, VerdictType, Why};
 
 use crate::types::{Evidence, LearnConfig, Outcome, SkillKey, ZeroWhy};
 

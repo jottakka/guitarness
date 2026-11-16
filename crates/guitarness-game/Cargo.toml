@@ -1,0 +1,30 @@
+[package]
+name = "guitarness-game"
+version = "0.1.0"
+edition = "2024"
+publish = false
+license = "MIT"
+repository = "https://github.com/jottakka/guitarness"
+
+[lib]
+name = "guitarness_game"
+path = "src/lib.rs"
+
+[[bin]]
+name = "guitarness-game"
+path = "src/main.rs"
+
+[dependencies]
+# Default features minus `audio` (bevy_audio, rodio, cpal 0.17, lewton): the game has one audio stack, guitarness-audio.
+bevy = { version = "=0.20.1", default-features = false, features = ["2d", "3d", "ui"] }
+guitarness-theory = { path = "../guitarness-theory" }
+guitarness-core = { path = "../guitarness-core" }
+guitarness-audio = { path = "../guitarness-audio" }
+guitarness-session = { path = "../guitarness-session" }
+guitarness-dsp = { path = "../guitarness-dsp" }
+guitarness-learn = { path = "../guitarness-learn" }
+
+[workspace]
+
+[profile.dev.package."*"]
+opt-level = 2

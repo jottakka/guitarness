@@ -1,8 +1,8 @@
-# Tônica PC (Guitarness) — Adendo 02 ao DESIGN v1
+# Guitarness PC (Guitarness) — Adendo 02 ao DESIGN v1
 
 Data: 16/11/2026. Este adendo **acrescenta** ao DESIGN v1 e ao Adendo 01. Onde houver conflito sobre tempo, direção, portões ou fita, vale este texto. Aqui ficam as regras de desenho.
 
-Estado da evidência: toda a evidência de tempo é sintética (`FakeBackend`, jogador virtual do `tonica-sim`). Nenhuma regra abaixo foi provada com microfone real. As fitas reais do roteiro (`docs/roteiro-primeira-sessao.md`) são o próximo passo.
+Estado da evidência: toda a evidência de tempo é sintética (`FakeBackend`, jogador virtual do `guitarness-sim`). Nenhuma regra abaixo foi provada com microfone real. As fitas reais do roteiro (`docs/roteiro-primeira-sessao.md`) são o próximo passo.
 
 ## B1. Tempo: sistema e jogador são duas coisas (P8)
 
@@ -29,7 +29,7 @@ O que o chirp não substitui:
 
 - Sem laço, fica o passo de batida (~12 s), base `Estimate`, sem tendência.
 - Recusa da rodada curta cai sozinha na rodada completa de 10 sondas, depois na de −6 dBFS, depois no passo de batida. Nunca há tela de falha.
-- `tonica calibrate` (CLI) mantém as 10 sondas. É a ferramenta de repetibilidade em hardware.
+- `guitarness calibrate` (CLI) mantém as 10 sondas. É a ferramenta de repetibilidade em hardware.
 
 Limite honesto: a taxa de recusa da rodada curta em sala real é desconhecida.
 
@@ -52,7 +52,7 @@ Cada tipo de veredito só julga quando a evidência o autoriza.
 - Regra padrão: n ≥ 200 eventos rotulados e `false_wrong / n ≤ 1/200`. Para `Open`, em pelo menos 3 fitas reais.
 - Padrão compilado: `Attack`, `Timing`, `Tendency` = `Provisional`. `Direction`, `Accent`, `Muted`, `ChordIdentity`, `StringMissing`, `StringExtra`, `WrongFret` = `Locked`.
 - O relatório mostra o limite superior de Wilson a 95%. Com 200 eventos e 0 falsos, o limite é 1,5%. O número do voto é estimativa pontual, e o relatório diz isso.
-- `gates.json` na pasta de dados sobrepõe o padrão. `tonica replay --gates` o gera.
+- `gates.json` na pasta de dados sobrepõe o padrão. `guitarness replay --gates` o gera.
 - Só fita real abre `Open`. Evidência sintética nunca abre.
 - O portão tem de poder fechar: o teste `gates_synthetic` tem controle negativo (um deslocamento de +40 ms não passa).
 
@@ -75,4 +75,4 @@ Regra para o M6 (vistas de jogo): a vista padrão do ritmo é **um glifo por eve
 
 ## B8. Itens que o responsável decide
 
-Decisões em aberto (gravar toda sessão por padrão, repetir o passo de batida sem laço, texto sob pictogramas, andamento automático, janela inicial, tecla de contestar, crate `tonica-session`, pasta de dados, licença do jogo, portão do tempo `Provisional`). Até a resposta, valem os padrões do [relatório da fatia Pulso](../relatorios/fatia-pulso.md).
+Decisões em aberto (gravar toda sessão por padrão, repetir o passo de batida sem laço, texto sob pictogramas, andamento automático, janela inicial, tecla de contestar, crate `guitarness-session`, pasta de dados, licença do jogo, portão do tempo `Provisional`). Até a resposta, valem os padrões do [relatório da fatia Pulso](../relatorios/fatia-pulso.md).

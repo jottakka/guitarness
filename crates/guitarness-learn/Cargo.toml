@@ -7,5 +7,5 @@ repository.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-tonica-core.workspace = true
+guitarness-core.workspace = true
 serde_json.workspace = true

@@ -9,18 +9,18 @@ Aviso: os passos 2, 3 e 5 tocam bipes e cliques. Combine o horário.
 - Use um Mac ou um PC Windows com microfone e caixa de som. O sistema de som tem de ouvir o próprio alto-falante: caixa de som na mesa, microfone aberto. Fone ou Bluetooth não têm laço; o jogo usa então só uma estimativa e não afirma tendência (os comandos funcionam, o resultado é mais pobre).
 - Desligue o ganho automático e os efeitos de áudio do microfone se o sistema oferecer (no Windows: "melhorias de áudio" desligadas).
 - Aceite o pedido de microfone do macOS uma vez. Se o jogo rodar do terminal, a permissão vale para o terminal.
-- Pasta de trabalho: escolha uma pasta de dados, por exemplo `./tonica-data`. Os comandos abaixo usam `$DADOS` para ela.
-- Binários: `tonica` é o da CLI (`crates/tonica-cli`); o jogo é `tonica-game` (`crates/tonica-game`, workspace próprio). Compile em release antes: `cargo build --release` na raiz e `cargo build --release --manifest-path crates/tonica-game/Cargo.toml`.
+- Pasta de trabalho: escolha uma pasta de dados, por exemplo `./guitarness-data`. Os comandos abaixo usam `$DADOS` para ela.
+- Binários: `guitarness` é o da CLI (`crates/guitarness-cli`); o jogo é `guitarness-game` (`crates/guitarness-game`, workspace próprio). Compile em release antes: `cargo build --release` na raiz e `cargo build --release --manifest-path crates/guitarness-game/Cargo.toml`.
 
 ```
-export DADOS=./tonica-data
+export DADOS=./guitarness-data
 mkdir -p "$DADOS"
 ```
 
 ## Passo 1 — dispositivos (sem som)
 
 ```
-tonica audio devices
+guitarness audio devices
 ```
 
 Anote os ids da entrada e da saída que você vai usar (`--in ID --out ID` nos comandos seguintes; sem eles vale o padrão do sistema). Nada toca.
@@ -28,7 +28,7 @@ Anote os ids da entrada e da saída que você vai usar (`--in ID --out ID` nos c
 ## Passo 2 — sonda (bipes baixos)
 
 ```
-tonica audio probe --beep
+guitarness audio probe --beep
 ```
 
 Toca um clique baixo (−20 dBFS) a cada 0,5 s por 3 s. Se o comando sair com código diferente de 0, anote o código e a mensagem. Códigos: 10 sem entrada, 11 sem saída, 12 permissão ou fluxo, 13 formato.
@@ -36,7 +36,7 @@ Toca um clique baixo (−20 dBFS) a cada 0,5 s por 3 s. Se o comando sair com c�
 ## Passo 3 — calibração (bipes)
 
 ```
-tonica calibrate --beep --repeat 3 --profile "$DADOS/perfil.json"
+guitarness calibrate --beep --repeat 3 --profile "$DADOS/perfil.json"
 ```
 
 Fique em silêncio, sem tocar violão. A calibração roda 3 vezes; o relatório mostra a faixa de `L_rt`. Para o relatório com números: acrescente `--detalhes`. Para a verificação curta (~4 s): `--short`.
@@ -46,7 +46,7 @@ Anote: o texto final, o código de saída e a faixa de `L_rt`.
 ## Passo 4 — afinador (sem som)
 
 ```
-tonica tune --seconds 10
+guitarness tune --seconds 10
 ```
 
 Toque cada corda solta. Ele escuta; não toca nada. Anote a corda e o desvio em cents que ele mostrou, se estiver errado de forma óbvia.
@@ -54,7 +54,7 @@ Toque cada corda solta. Ele escuta; não toca nada. Anote a corda e o desvio em 
 ## Passo 5 — jogo no Pulso, 5 minutos
 
 ```
-cargo run --release --manifest-path crates/tonica-game/Cargo.toml -- --pulse --live --tape --data "$DADOS"
+cargo run --release --manifest-path crates/guitarness-game/Cargo.toml -- --pulse --live --tape --data "$DADOS"
 ```
 
 O jogo abre uma janela. Passagem de som automática (cerca de 3 s, sem tocar nada), depois a contagem e a rodada.
@@ -75,14 +75,14 @@ Opção para repetir só o acerto da tela: `--video-offset MS` na linha do coman
 Cada comando grava uma fita de 10 s com um rótulo. Rode com o violão no colo, o microfone onde você joga.
 
 ```
-tonica audio record "$DADOS/tapes" --take silencio       --seconds 10
-tonica audio record "$DADOS/tapes" --take so-cliques     --seconds 10 --click 90 --beep
-tonica audio record "$DADOS/tapes" --take fala           --seconds 10
-tonica audio record "$DADOS/tapes" --take acorde-solto   --seconds 10
-tonica audio record "$DADOS/tapes" --take martelada      --seconds 10
-tonica audio record "$DADOS/tapes" --take acorde-errado  --seconds 10 --click 90 --beep
-tonica audio record "$DADOS/tapes" --take base-sem-violao --seconds 10 --click 90 --beep
-tonica audio record "$DADOS/tapes" --take abafado-nailon --seconds 10 --click 90 --beep
+guitarness audio record "$DADOS/tapes" --take silencio       --seconds 10
+guitarness audio record "$DADOS/tapes" --take so-cliques     --seconds 10 --click 90 --beep
+guitarness audio record "$DADOS/tapes" --take fala           --seconds 10
+guitarness audio record "$DADOS/tapes" --take acorde-solto   --seconds 10
+guitarness audio record "$DADOS/tapes" --take martelada      --seconds 10
+guitarness audio record "$DADOS/tapes" --take acorde-errado  --seconds 10 --click 90 --beep
+guitarness audio record "$DADOS/tapes" --take base-sem-violao --seconds 10 --click 90 --beep
+guitarness audio record "$DADOS/tapes" --take abafado-nailon --seconds 10 --click 90 --beep
 ```
 
 O que fazer em cada uma:
@@ -105,14 +105,14 @@ Sem `--beep` o clique fica mudo. A fita da tomada tem o perfil só se você pass
 ## Passo 7 — conferir as fitas (sem som)
 
 ```
-tonica replay "$DADOS/tapes" --report
-tonica replay "$DADOS/tapes" --disputes
+guitarness replay "$DADOS/tapes" --report
+guitarness replay "$DADOS/tapes" --disputes
 ```
 
 `--report` mostra a tabela de confusão. `--disputes` lista o que você contestou. Para guardar o áudio de uma contestação (1 s antes e depois):
 
 ```
-tonica replay "$DADOS/tapes" --export-dispute 1 contestacao-1.wav
+guitarness replay "$DADOS/tapes" --export-dispute 1 contestacao-1.wav
 ```
 
 Código de saída 30 quer dizer diferença no replay ou portão que reprova; 20, fita ilegível. Anote o código.

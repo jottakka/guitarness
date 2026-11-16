@@ -6,8 +6,8 @@
 use std::collections::{BTreeMap, BTreeSet};
 
 use crate::types::{BlockKind, BlockRecord, Grade, SkillKey};
+use guitarness_core::pulse::Exercise;
 use serde_json::{Value, json};
-use tonica_core::pulse::Exercise;
 
 const DAY_MS: i64 = 86_400_000;
 const FORMAT_V: u64 = 1;

@@ -1,8 +1,8 @@
 //! Plain data types of the learner model (the verifier/learner design plan §4). Functions live in the unit modules.
 
-use tonica_core::gates::GateState;
-use tonica_core::pulse::Exercise;
-use tonica_core::verdict::{VerdictType, Why};
+use guitarness_core::gates::GateState;
+use guitarness_core::pulse::Exercise;
+use guitarness_core::verdict::{VerdictType, Why};
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub struct SkillKey(pub String);

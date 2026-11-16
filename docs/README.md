@@ -2,11 +2,11 @@
 
 Toda a documentação está em português do Brasil. O código-fonte e seus comentários de API estão em inglês.
 
-Alguns textos ainda usam o nome antigo do projeto ("Tônica"). O nome atual é Guitarness. Documentos escritos em 16/11/2026 refletem o estado daquela data.
+O projeto se chamava Tônica antes de virar Guitarness. Documentos escritos em 16/11/2026 refletem o estado daquela data.
 
 ## Comece por aqui
 
-- [Visão geral da arquitetura](arquitetura/visao-geral.md): crates, fluxo de áudio até o jogo, tempo real e portões.
+- [Visão geral da arquitetura](arquitetura/visao-geral.md): crates, fluxo de áudio até o jogo, aprendiz, contrato e verificador, tempo real e portões.
 - [Roteiro da primeira sessão com microfone real](roteiro-primeira-sessao.md): como gravar as fitas que abrem os portões.
 
 ## Design
@@ -32,6 +32,7 @@ O design cita os ADR-003 (limiares do juiz) e ADR-004 (rede por corda). Eles ain
 |---|---|
 | [Marcos M0 e M1](relatorios/marcos-m0-m1.md) | Paridade do DSP com a demo web, custo por quadro e ausência de alocação. |
 | [Fatia Pulso](relatorios/fatia-pulso.md) | Testes, precisão de tempo, portões sintéticos e limites abertos. |
+| [Rodada 2](relatorios/rodada-2.md) | Aprendiz, verificador de acordes, contrato por evento, `guitarness verify`, comportamento da testemunha e limites. |
 
 ## Pesquisa
 

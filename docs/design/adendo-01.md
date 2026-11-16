@@ -1,4 +1,4 @@
-# Tônica PC — Adendo 01 ao DESIGN v1
+# Guitarness PC — Adendo 01 ao DESIGN v1
 
 Data: 16/11/2026. Origem: decisões de design de 16/11/2026. Este adendo **acrescenta** ao DESIGN v1. Onde houver conflito, vale o adendo.
 
@@ -55,7 +55,7 @@ Cada tipo tem um glifo próprio, legível de longe e sem texto, e uma regra de j
 
 Princípio 3 continua: o golpe nunca é opcional. O fantasma é a única exceção, e é explícita (não há ataque esperado).
 
-O protótipo (`crates/tonica-game`) ganha uma "galeria de golpes" (`--chart strokes`, tecla C) que mostra todos os tipos a 70 BPM.
+O protótipo (`crates/guitarness-game`) ganha uma "galeria de golpes" (`--chart strokes`, tecla C) que mostra todos os tipos a 70 BPM.
 
 ## A3. Modo Pulso (treino de tempo)
 
@@ -89,7 +89,7 @@ O protótipo (`crates/tonica-game`) ganha uma "galeria de golpes" (`--chart stro
 
 ## A4. Detector de ataque e calibração: estado medido
 
-Código: `crates/tonica-dsp/src/{onset,resample,latency}.rs`; bancada em `crates/tonica-sim`.
+Código: `crates/guitarness-dsp/src/{onset,resample,latency}.rs`; bancada em `crates/guitarness-sim`.
 
 **Detector (`OnsetDetector`).** Entrada → passa-altas 60 Hz → meia-banda ×2 (24 kHz) → dois ramos:
 

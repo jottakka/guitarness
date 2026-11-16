@@ -5,7 +5,7 @@
 | Afirmação | Evidência |
 |---|---|
 | Workspace compila em Windows e macOS | `cargo build --release --workspace` em Windows (rustc 1.100.0, MSVC) e em macOS (rustc 1.100.0, aarch64) |
-| Paridade com a demo nos 5 cenários golden, autocorrelação direta | `cargo test --release -p tonica-dsp --test golden`: 0 quadros fora da tolerância, mesmos eventos (tipo, nota, via, tempo ±1e-5 s), nos dois sistemas |
+| Paridade com a demo nos 5 cenários golden, autocorrelação direta | `cargo test --release -p guitarness-dsp --test golden`: 0 quadros fora da tolerância, mesmos eventos (tipo, nota, via, tempo ±1e-5 s), nos dois sistemas |
 | Mesmo resultado com autocorrelação por FFT | mesmo teste, `golden_fft_events`: eventos idênticos, 0 quadros fora da tolerância |
 | Placar igual ao `RESUMO.txt` | `golden_scores_match_resumo`: A 37/37, B 23/23, C 22/23, D 20/23, F 9/9; nenhum evento via alvo no F |
 | Caminho por bloco sem alocação | `tests/no_alloc.rs` com `assert_no_alloc` (debug). Controle negativo: um `vec!` dentro da guarda aborta o processo (SIGABRT) |
@@ -13,9 +13,9 @@
 
 Desvio máximo por quadro (igual nos dois back-ends): Δf 5,0e-5 Hz, Δc 5,0e-6, Δrms relativo 4,9e-7, Δp 5,0e-6. Isso é o arredondamento do próprio CSV (4 a 6 casas), não diferença de cálculo.
 
-Tolerância declarada (`crates/tonica-dsp/tests/golden.rs`): t 2e-6 s; f 5e-3 Hz (zero e não-zero precisam concordar); c 2e-4; rms 1e-5 relativo; presença 2e-4.
+Tolerância declarada (`crates/guitarness-dsp/tests/golden.rs`): t 2e-6 s; f 5e-3 Hz (zero e não-zero precisam concordar); c 2e-4; rms 1e-5 relativo; presença 2e-4.
 
-## Custo por quadro (`cargo bench -p tonica-dsp --bench frame`)
+## Custo por quadro (`cargo bench -p guitarness-dsp --bench frame`)
 
 | Máquina | Direta (fiel) | FFT | FFT + 3 presenças |
 |---|---|---|---|

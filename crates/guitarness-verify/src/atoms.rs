@@ -20,7 +20,7 @@
 //! The dictionary is rebuilt for every event inside storage allocated by [`Dict::new`];
 //! nothing here allocates after that.
 
-use tonica_dsp::mtof;
+use guitarness_dsp::mtof;
 
 /// FFT length of the analysis frame, samples at the decimated rate.
 pub const N_FFT: usize = 4096;

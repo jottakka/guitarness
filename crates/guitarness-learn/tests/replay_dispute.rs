@@ -4,6 +4,9 @@
 use std::fs;
 use std::path::PathBuf;
 
+use guitarness_core::gates::GateState;
+use guitarness_core::pulse::Exercise;
+use guitarness_core::verdict::VerdictType;
 use guitarness_learn::mastery::{DAY_MS, LearnerLedger};
 use guitarness_learn::picker::next_offer;
 use guitarness_learn::shadow::{NoShadow, Shadow, observe_block, shadow_line};
@@ -12,9 +15,6 @@ use guitarness_learn::types::{
     BlockKind, BlockRecord, BlockSpec, Evidence, Grade, LearnConfig, LogLine, Offer, Outcome,
     Provenance, SessionCtx, SkillKey,
 };
-use tonica_core::gates::GateState;
-use tonica_core::pulse::Exercise;
-use tonica_core::verdict::VerdictType;
 
 struct Tmp(PathBuf);
 impl Tmp {

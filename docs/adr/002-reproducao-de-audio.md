@@ -50,7 +50,7 @@ Tudo lido em 16/11/2026. "Não verificado" quer dizer: a fonte não diz, e eu n�
 
 ## Consequências
 
-- O `tonica-audio` ganha `mixer.rs` e `sounds.rs`. A Bevy só manda comandos (`MixCmd`) e lê eventos.
+- O `guitarness-audio` ganha `mixer.rs` e `sounds.rs`. A Bevy só manda comandos (`MixCmd`) e lê eventos.
 - Sem grafo de efeitos no M2. Com microfone aberto e sem fone, os sons do jogo ficam acima de 6 kHz (DESIGN §5); efeito sonoro rico só entra com fone.
 - A voz de streaming e a troca de andamento por pré-render (WSOLA) ficam para o M6, fora do tempo real, como no DESIGN §4.2.
 - O mixer mantém um ponto de extensão para uma fonte externa, usado só pelo S1.
@@ -100,10 +100,10 @@ Limite desta pesquisa: li as páginas por uma ferramenta que resume. Não compil
 
 Este anexo registra o que mudou depois da fatia Pulso (relatório [fatia Pulso](../relatorios/fatia-pulso.md)). O texto da decisão acima não muda.
 
-- **Um fluxo de saída, em todo o produto.** O jogo (`tonica-game`) não liga mais `bevy_audio`, `rodio` nem `cpal` 0.17. As features do Bevy 0.20.1 são `2d`, `3d` e `ui`; o padrão sem `audio`. O motor `AudioEngine` do `tonica-audio` (cpal 0.18.2) é a única pilha de áudio. Isso cumpre R2 e a proibição do item 3 da decisão (segundo fluxo de saída). Fonte: relato da G0 (a árvore resolvida não contém `rodio`, `bevy_audio` nem `cpal` 0.17.3; as linhas de lock listam esses nomes só como dependências opcionais do `bevy_internal`).
+- **Um fluxo de saída, em todo o produto.** O jogo (`guitarness-game`) não liga mais `bevy_audio`, `rodio` nem `cpal` 0.17. As features do Bevy 0.20.1 são `2d`, `3d` e `ui`; o padrão sem `audio`. O motor `AudioEngine` do `guitarness-audio` (cpal 0.18.2) é a única pilha de áudio. Isso cumpre R2 e a proibição do item 3 da decisão (segundo fluxo de saída). Fonte: relato da G0 (a árvore resolvida não contém `rodio`, `bevy_audio` nem `cpal` 0.17.3; as linhas de lock listam esses nomes só como dependências opcionais do `bevy_internal`).
 - **O relógio da tela vem do áudio.** `HostClock`, `Playhead` e `PlayClock` (A1) dão ao jogo o quadro de saída; o jogo não usa relógio de quadros para julgar. O juiz compara ataque e clique em quadros de áudio, nunca em tempo de vídeo (I2). Para a imagem fica `video_offset_ms` (teclas `[` e `]`, ±5 ms), gravado na fita.
 - **Fronteira do estouro corrigida (R3, P23).** O `cpal_backend` grava a fronteira do `Xrun` num atômico; `ErrorFn` recebe `Option<XrunBoundary>`. Medido no `FakeBackend`: degrau do relógio no estouro −0,004 ms, contra +1,49 ms antes (relato da A1). WASAPI: erro de captura sai antes do callback do pacote afetado, conforme leitura do código do cpal 0.18.2; **não** verificado em dispositivo. CoreAudio: fronteira aproximada.
 - **Anel cru e fita.** A capturadora ganhou um anel cru de 4 s (`RAW_SECONDS`) com marca `{in_first, det_first, frames}`, separado do tap de 2 s do calibrador. A fita grava a agenda do mixer, não um segundo WAV de saída; o mixer determinístico (T2) recria o som.
 - **Calibração em duas partes.** `L_rt` é a latência do sistema; a tendência do jogador nunca é subtraída. A Passagem curta mede `L_rt` em 3,44 s virtuais, com erro de pior caso de 0,007 ms em 24 salas sintéticas (relato da A2).
-- **O que continua aberto para fechar este ADR** (nada mudou na condição de "aceito"): os testes T2, T7, T10 e T11 em dispositivo real e o preenchimento do Anexo A. A fatia Pulso não abriu dispositivo. O ADR segue **proposto**. O jogo da fatia Pulso não foi verificado no Windows; o caminho `cfg(windows)` do `tonica-audio` compila e passa clippy e testes lá.
+- **O que continua aberto para fechar este ADR** (nada mudou na condição de "aceito"): os testes T2, T7, T10 e T11 em dispositivo real e o preenchimento do Anexo A. A fatia Pulso não abriu dispositivo. O ADR segue **proposto**. O jogo da fatia Pulso não foi verificado no Windows; o caminho `cfg(windows)` do `guitarness-audio` compila e passa clippy e testes lá.
 - **Spike S1 (Anexo B):** não necessário nesta fatia. Nada no Pulso precisa de voz de streaming ou de motor externo.

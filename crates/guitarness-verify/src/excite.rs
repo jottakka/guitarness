@@ -61,9 +61,9 @@
 
 use std::sync::Arc;
 
+use guitarness_dsp::resample::Decimator2;
 use realfft::num_complex::Complex;
 use realfft::{RealFftPlanner, RealToComplex};
-use tonica_dsp::resample::Decimator2;
 
 use crate::atoms::{Dict, Grid, MAX_ATOMS, MAX_BINS, MAX_PARTIALS, N_FFT};
 use crate::types::{Abstain, Ask, ConfusionSet, Family, HypKind, Opinion, Window, Witness};

@@ -1,4 +1,4 @@
-//! DSP witness against `tonica-sim` strums (the verifier/learner design plan, unit V2).
+//! DSP witness against `guitarness-sim` strums (the verifier/learner design plan, unit V2).
 //!
 //! Everything here is synthetic: harmonic Karplus-Strong strings, a Schroeder reverb, pink
 //! noise plus hum and a laptop-microphone high-pass. Seeds stay inside
@@ -9,15 +9,17 @@ use std::alloc::{GlobalAlloc, Layout, System};
 use std::cell::Cell;
 use std::time::Instant;
 
+use guitarness_dsp::synth::Mulberry32;
+use guitarness_sim::fx::{hum, laptop_mic, pink, reverb, rms};
+use guitarness_sim::strum::{
+    Dir, OPEN, StrumSpec, Voicing, render_take, render_take_with, voicing,
+};
 use guitarness_verify::excite::{
     Analysis, CombWitness, DEV_SEEDS, ExciteConfig, Fault, MAX_ALTS, cut,
 };
 use guitarness_verify::types::{
     Abstain, Ask, ConfusionSet, Family, HypKind, Hypothesis, Opinion, Window, Witness,
 };
-use tonica_dsp::synth::Mulberry32;
-use tonica_sim::fx::{hum, laptop_mic, pink, reverb, rms};
-use tonica_sim::strum::{Dir, OPEN, StrumSpec, Voicing, render_take, render_take_with, voicing};
 
 // ---------------------------------------------------------------------------------------
 // Allocation counter (per thread, so tests may run in parallel).
@@ -62,7 +64,7 @@ fn allocs() -> u64 {
 
 const SR: f64 = 48_000.0;
 const CHORDS: [&str; 9] = ["G", "C", "D", "Em", "Am", "F", "A", "E", "Dm"];
-/// Level of the judged strum (RMS of its first 50 ms), as in `tonica_sim::timing`.
+/// Level of the judged strum (RMS of its first 50 ms), as in `guitarness_sim::timing`.
 const STRUM_RMS: f64 = 0.1;
 
 /// What the hand really does, against what the chart asks.

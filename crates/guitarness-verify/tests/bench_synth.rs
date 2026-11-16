@@ -16,6 +16,14 @@
 
 use std::sync::{Arc, OnceLock};
 
+use guitarness_core::chart::{
+    Chart, Dir as CDir, Event, EventKind, Loc, Style, Voicing as CVoicing,
+};
+use guitarness_core::gates::GateTable;
+use guitarness_core::verdict::VerdictType;
+use guitarness_dsp::synth::Mulberry32;
+use guitarness_sim::fx::{hum, laptop_mic, pink, reverb, rms};
+use guitarness_sim::strum::{Dir, StrumSpec, Voicing, render_take, render_take_with, voicing};
 use guitarness_verify::bench::{
     BenchReport, Class, Cond, Scenario, Tag, Take, Truth, frac, label_of, open_gates, run, wilson,
     worst_case_cfg,
@@ -23,17 +31,11 @@ use guitarness_verify::bench::{
 use guitarness_verify::excite::{CombWitness, DEV_SEEDS, ExciteConfig};
 use guitarness_verify::hyp::confusion_set;
 use guitarness_verify::types::{Abstain, Ask, ConfusionSet, HypKind, Opinion};
-use tonica_core::chart::{Chart, Dir as CDir, Event, EventKind, Loc, Style, Voicing as CVoicing};
-use tonica_core::gates::GateTable;
-use tonica_core::verdict::VerdictType;
-use tonica_dsp::synth::Mulberry32;
-use tonica_sim::fx::{hum, laptop_mic, pink, reverb, rms};
-use tonica_sim::strum::{Dir, StrumSpec, Voicing, render_take, render_take_with, voicing};
 
 const SR: f64 = 48_000.0;
 /// First seed of the bench. Everything below `DEV_SEEDS.end` was used to choose the operating point.
 const RESERVED_SEEDS: u32 = 1_000_000;
-/// Level of the judged strum (RMS of its first 50 ms), as in `tonica_sim::timing`.
+/// Level of the judged strum (RMS of its first 50 ms), as in `guitarness_sim::timing`.
 const STRUM_RMS: f64 = 0.1;
 
 const PROGRESSIONS: [&[&str]; 3] = [
@@ -832,7 +834,7 @@ fn check4(b: &Bench, tag: &str) {
     ] {
         assert_eq!(
             proposed.state(t),
-            tonica_core::gates::GateState::Locked,
+            guitarness_core::gates::GateState::Locked,
             "{t:?} unlocked by synthetic evidence"
         );
     }
@@ -1096,7 +1098,7 @@ fn detune_sweep() {
     md += "\nSeeds 1,000,000 + 100,000 x [1000, 1882) (fresh V2c block). Strum RMS, noise and reverb as the bench; the \
            detune is applied per string by cubic resampling of the rendered string (time scale \
            changes by the same ratio, at most 1.7%). Inharmonicity: not available through the \
-           public API of tonica-sim (Karplus-Strong loop, no dispersion parameter), not measured.\n";
+           public API of guitarness-sim (Karplus-Strong loop, no dispersion parameter), not measured.\n";
     println!("{md}\n{unavailable}");
     if let Ok(path) = std::env::var("DETUNE_TABLE") {
         std::fs::write(&path, &md).expect("write table");

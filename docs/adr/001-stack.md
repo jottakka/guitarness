@@ -1,4 +1,4 @@
-# ADR-001: Stack do Tônica para PC
+# ADR-001: Stack do Guitarness para PC
 
 Data: 16/11/2026. Estado: aceito (revisar no portão do M2).
 

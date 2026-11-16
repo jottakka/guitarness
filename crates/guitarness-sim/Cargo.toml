@@ -1,0 +1,13 @@
+[package]
+name = "guitarness-sim"
+edition.workspace = true
+version.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+guitarness-dsp.workspace = true
+
+[dev-dependencies]
+guitarness-dsp = { workspace = true, features = ["trace"] }

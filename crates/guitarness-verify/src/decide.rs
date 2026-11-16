@@ -6,8 +6,8 @@
 //! a tape-derived `accuse_margin` exists and is met, and both the ChordIdentity gate and the
 //! gate of the accused type are `Open`.
 
-use tonica_core::gates::{GateState, GateTable};
-use tonica_core::verdict::VerdictType;
+use guitarness_core::gates::{GateState, GateTable};
+use guitarness_core::verdict::VerdictType;
 
 use crate::types::{
     Abstain, ChordOutcome, ChordVerdict, ConfusionSet, Family, HypKind, Opinion, VerifyConfig,

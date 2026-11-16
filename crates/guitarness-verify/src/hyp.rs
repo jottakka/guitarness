@@ -3,7 +3,7 @@
 //! The hypothesis set comes from the chart only: the voicing, its `req` letters, the stroke
 //! `span` and the neighbouring chords. Nothing is transcribed from audio.
 
-use tonica_core::chart::{Chart, Dir, Event, EventKind, Loc, Voicing};
+use guitarness_core::chart::{Chart, Dir, Event, EventKind, Loc, Voicing};
 
 use crate::types::{Ask, ConfusionSet, HypKind, Hypothesis};
 
@@ -14,7 +14,7 @@ pub const MAX_ALTS: usize = 24;
 const MAX_FRET: i32 = 24;
 
 /// Strings a stroke reaches, inclusive: explicit `span`, else down 0..=5 and up 2..=5.
-fn reach(dir: Dir, span: Option<tonica_core::chart::Span>) -> (usize, usize) {
+fn reach(dir: Dir, span: Option<guitarness_core::chart::Span>) -> (usize, usize) {
     match span {
         Some(s) => (usize::from(s.lo), usize::from(s.hi)),
         None => match dir {

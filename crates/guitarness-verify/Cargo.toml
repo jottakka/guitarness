@@ -7,9 +7,9 @@ repository.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-tonica-core.workspace = true
-tonica-dsp.workspace = true
+guitarness-core.workspace = true
+guitarness-dsp.workspace = true
 realfft.workspace = true
 
 [dev-dependencies]
-tonica-sim.workspace = true
+guitarness-sim.workspace = true

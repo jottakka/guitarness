@@ -4,7 +4,7 @@
 //! This module only reads it. Everything here is `pub(crate)`: nothing public returns a list
 //! of due items (the player never sees a queue).
 
-use tonica_core::pulse::{Exercise, MAX_BPM, MIN_BPM};
+use guitarness_core::pulse::{Exercise, MAX_BPM, MIN_BPM};
 
 use crate::mastery::{HOUR_MS, LastBlock, LearnerLedger, NOT_DUE_MS};
 use crate::types::{Axis, BlockSpec, Grade, LearnConfig, SkillKey};

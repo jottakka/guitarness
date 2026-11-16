@@ -1,5 +1,8 @@
 //! T1 tests: vetted moves respect J4, lint, Digest has no error-like field, rule fallback.
 
+use guitarness_core::gates::GateState;
+use guitarness_core::pulse::Exercise;
+use guitarness_core::verdict::VerdictType;
 use guitarness_learn::coach::{
     Digest, Lang, LintError, Move, MoveChooser, PhraseId, Pick, RuleCoach, VettedMove, lint,
     resolve, vetted_moves,
@@ -10,9 +13,6 @@ use guitarness_learn::types::{
     BlockKind, BlockRecord, BlockSpec, Evidence, LearnConfig, Outcome, Provenance, SessionCtx,
     SkillKey,
 };
-use tonica_core::gates::GateState;
-use tonica_core::pulse::Exercise;
-use tonica_core::verdict::VerdictType;
 
 struct Rng(u64);
 impl Rng {
